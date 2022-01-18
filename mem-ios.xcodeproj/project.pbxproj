@@ -14,6 +14,9 @@
 		BA0ACC1527905AA60047BE8C /* mem_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC1427905AA60047BE8C /* mem_iosTests.swift */; };
 		BA0ACC1F27905AA60047BE8C /* mem_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC1E27905AA60047BE8C /* mem_iosUITests.swift */; };
 		BA0ACC2127905AA60047BE8C /* mem_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */; };
+		BA8012AC2796873200A862E6 /* AddGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* AddGame.swift */; };
+		BA8012AE2796875300A862E6 /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* MenuOption.swift */; };
+		BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9FD2C2796DB5F001DC263 /* Dimen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		BA0ACC1A27905AA60047BE8C /* mem-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mem-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0ACC1E27905AA60047BE8C /* mem_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosUITests.swift; sourceTree = "<group>"; };
 		BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BA8012AB2796873200A862E6 /* AddGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGame.swift; sourceTree = "<group>"; };
+		BA8012AD2796875300A862E6 /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
+		BAB9FD2C2796DB5F001DC263 /* Dimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		BA0ACC0227905AA20047BE8C /* mem-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BA8012A92796871100A862E6 /* landing */,
 				BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */,
 				BA0ACC0527905AA20047BE8C /* ContentView.swift */,
 				BA0ACC0727905AA50047BE8C /* Assets.xcassets */,
@@ -125,6 +132,40 @@
 				BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */,
 			);
 			path = "mem-iosUITests";
+			sourceTree = "<group>";
+		};
+		BA8012A92796871100A862E6 /* landing */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9FD2A2796D964001DC263 /* ui */,
+				BA8012AA2796871100A862E6 /* component */,
+			);
+			path = landing;
+			sourceTree = "<group>";
+		};
+		BA8012AA2796871100A862E6 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				BA8012AB2796873200A862E6 /* AddGame.swift */,
+				BA8012AD2796875300A862E6 /* MenuOption.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
+		BAB9FD2A2796D964001DC263 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9FD2B2796D96E001DC263 /* theme */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		BAB9FD2B2796D96E001DC263 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				BAB9FD2C2796DB5F001DC263 /* Dimen.swift */,
+			);
+			path = theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +299,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */,
+				BA8012AE2796875300A862E6 /* MenuOption.swift in Sources */,
 				BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */,
+				BA8012AC2796873200A862E6 /* AddGame.swift in Sources */,
+				BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
