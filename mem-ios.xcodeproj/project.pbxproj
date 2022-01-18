@@ -100,6 +100,7 @@
 		BA0ACC0227905AA20047BE8C /* mem-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BAB9FD2A2796D964001DC263 /* ui */,
 				BA8012A92796871100A862E6 /* landing */,
 				BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */,
 				BA0ACC0527905AA20047BE8C /* ContentView.swift */,
@@ -137,7 +138,6 @@
 		BA8012A92796871100A862E6 /* landing */ = {
 			isa = PBXGroup;
 			children = (
-				BAB9FD2A2796D964001DC263 /* ui */,
 				BA8012AA2796871100A862E6 /* component */,
 			);
 			path = landing;
