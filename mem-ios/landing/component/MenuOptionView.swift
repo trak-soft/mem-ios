@@ -18,7 +18,7 @@ import SwiftUI
  - Parameter bgColor: backgorund color of view
  - Parameter onClick: child view
  */
-struct MenuOption<Content : View>: View {
+struct MenuOptionView<Content : View>: View {
     
     var width = 145.0
     var height = 145.0
@@ -32,7 +32,13 @@ struct MenuOption<Content : View>: View {
         }label: {
             content()
         }
-        .frame(width: width, height: height)
+        .frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .topLeading
+            )
         .overlay(
             RoundedRectangle(cornerRadius: menuOptionRoundedCornerRadius)
                 .stroke(Color(UIColor.label), lineWidth: menuOptionBoarderWidth)
@@ -42,17 +48,18 @@ struct MenuOption<Content : View>: View {
     }
 }
 
-struct MenuOptionPreview: PreviewProvider {
+struct MenuOptionVeiwPreview: PreviewProvider {
     static var previews: some View {
-        MenuOption(
+        MenuOptionView(
             onClick: {
                 
             }, content: {
 
             }
         )
+        .frame(width: 145.0, height: 145.0)
         .previewLayout(.sizeThatFits)
         .preferredColorScheme(.light)
-        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .padding(.all)
     }
 }

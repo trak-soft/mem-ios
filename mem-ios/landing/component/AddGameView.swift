@@ -11,7 +11,7 @@ import SwiftUI
 Add Game component
  
  */
-struct AddGame: View {
+struct AddGameView: View {
     var image = "ic_add_game"
     
     var body: some View {
@@ -21,9 +21,9 @@ struct AddGame: View {
     }
 }
 
-struct AddGamePreview: PreviewProvider {
+struct AddGameViewPreview: PreviewProvider {
     static var previews: some View {
-        AddGame()
+        AddGameView()
             .padding(.all)
             .preferredColorScheme(.light)
             .previewLayout(.sizeThatFits)
@@ -33,11 +33,11 @@ struct AddGamePreview: PreviewProvider {
 
 struct MenuOptionAddGamePreview: PreviewProvider {
     static var previews: some View {
-        MenuOption(
+        MenuOptionView(
             onClick: {
                 
             }, content: {
-                AddGame()
+                AddGameView()
             }
         )
         .previewLayout(.sizeThatFits)
