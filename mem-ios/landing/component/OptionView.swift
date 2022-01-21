@@ -30,7 +30,7 @@ enum OptionType: Hashable {
 struct OptionView: View {
     let options: [OptionType]
     var rowCount: Int = 2
-    var padding: Int  = 15
+    var padding: CGFloat  = 15.0
     
     var body: some View {
         LazyVGrid(
@@ -73,7 +73,7 @@ struct OptionView: View {
                             AddGameView()
                         }
                     }
-                ).padding(.all, 15.0)
+                ).padding(.all, padding)
                     .aspectRatio(1.0, contentMode: .fill)
             }
         }
