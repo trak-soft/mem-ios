@@ -20,8 +20,6 @@ import SwiftUI
  */
 struct MenuOptionView<Content : View>: View {
     
-    var width = 145.0
-    var height = 145.0
     let bgColor: Color = .gray
     let onClick: () -> Void
     @ViewBuilder let  content: () -> Content
@@ -37,7 +35,7 @@ struct MenuOptionView<Content : View>: View {
               maxWidth: .infinity,
               minHeight: 0,
               maxHeight: .infinity,
-              alignment: .topLeading
+              alignment: .center
             )
         .overlay(
             RoundedRectangle(cornerRadius: menuOptionRoundedCornerRadius)

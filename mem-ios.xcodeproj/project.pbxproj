@@ -17,6 +17,7 @@
 		BA49EBA62797DD3800C67D52 /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* GameModeView.swift */; };
 		BA8012AC2796873200A862E6 /* AddGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* AddGameView.swift */; };
 		BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* MenuOptionView.swift */; };
+		BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89F4F3279AD4A700D760DD /* OptionView.swift */; };
 		BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9FD2C2796DB5F001DC263 /* Dimen.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		BA49EBA52797DD3800C67D52 /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
 		BA8012AB2796873200A862E6 /* AddGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGameView.swift; sourceTree = "<group>"; };
 		BA8012AD2796875300A862E6 /* MenuOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionView.swift; sourceTree = "<group>"; };
+		BA89F4F3279AD4A700D760DD /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		BAB9FD2C2796DB5F001DC263 /* Dimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				BA8012AB2796873200A862E6 /* AddGameView.swift */,
 				BA8012AD2796875300A862E6 /* MenuOptionView.swift */,
 				BA49EBA52797DD3800C67D52 /* GameModeView.swift */,
+				BA89F4F3279AD4A700D760DD /* OptionView.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */,
 				BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */,
 				BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */,
 				BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */,
