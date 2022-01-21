@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  mem-ios
+
+  Created by Emmanuel Kareem on 1/21/22.
+  
+*/
+
+"ic_add_game_content_description" = "add game mode";
+"ic_click_limit_content_description" = "%d clicks left";
+"ic_group_length_content_description" = "%d group length";
+"ic_preview_content_description" = "preview";
+"ic_no_preview_content_description" = "no preview";
+"ic_time_limit_content_description" = "%d seconds left";
+"ic_memory_content_description" = "memory icon";
+"ic_create_content_description" = "create icon";
+"memory" = "Memory";
+"create" = "Create";
