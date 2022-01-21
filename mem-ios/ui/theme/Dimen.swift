@@ -9,3 +9,4 @@ import Foundation
 
 let menuOptionRoundedCornerRadius = 10.0
 let menuOptionBoarderWidth = 2.0
+let gameModePaddingViewPadding = 5.0
