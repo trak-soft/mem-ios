@@ -5,7 +5,7 @@
   Created by Emmanuel Kareem on 1/21/22.
   
 */
-
+"app_name" = "memory";
 "ic_add_game_content_description" = "add game mode";
 "ic_click_limit_content_description" = "%d clicks left";
 "ic_group_length_content_description" = "%d group length";
