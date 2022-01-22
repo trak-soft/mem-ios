@@ -11,7 +11,8 @@ import SwiftUI
 struct mem_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingScreen()
+                .environmentObject(LandingViewModel())
         }
     }
 }
