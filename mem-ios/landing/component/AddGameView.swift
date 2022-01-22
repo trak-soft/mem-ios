@@ -34,9 +34,10 @@ struct AddGameViewPreview: PreviewProvider {
 struct MenuOptionAddGamePreview: PreviewProvider {
     static var previews: some View {
         MenuOptionView(
-            onClick: {
-                
-            }, content: {
+            bgColor: .clear,
+            onClick: {},
+            onHold: {},
+            content: {
                 AddGameView()
             }
         )

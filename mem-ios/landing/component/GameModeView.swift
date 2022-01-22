@@ -18,44 +18,45 @@ import SwiftUI
  */
 struct GameModeView: View {
     var groupLength: Int
-    var numOfGroup: Int
     var preview: Bool
-    var clickLimit: Int?
+    var numOfGroup: Int
     var timeLimit: Int?
+    var clickLimit: Int?
     
     var body: some View {
         VStack{
             HStack(alignment: .center){
                 InfoView(
                     number: groupLength,
-                    image: "ic_group_length"
+                    image: "ic_group_length",
+                    visible: true
                 )
                 Spacer()
                 InfoView(
                     number: nil,
-                    image: "ic_preview"
+                    image: "ic_preview",
+                    visible: true
                 )
                 Spacer()
                 InfoView(
                     number: numOfGroup,
-                    image: "ic_num_of_group"
+                    image: "ic_num_of_group",
+                    visible: true
                 )
             }
             Spacer()
             HStack(alignment: .center){
-                if clickLimit != nil {
-                    InfoView(
-                        number: clickLimit,
-                        image: "ic_time_limit"
-                    )
-                }
+                InfoView(
+                    number: timeLimit,
+                    image: "ic_time_limit",
+                    visible: timeLimit != nil
+                )
                 Spacer()
-                if timeLimit != nil {
-                    InfoView(
-                        number: timeLimit,
-                        image: "ic_click_limit"
-                    )
-                }
+                InfoView(
+                    number: clickLimit,
+                    image: "ic_click_limit",
+                    visible: clickLimit != nil
+                )
             }
         }
         .padding(.all, gameModePaddingViewPadding)
@@ -69,16 +70,19 @@ struct GameModeView: View {
 struct InfoView: View {
     let number: Int?
     let image: String
+    let visible: Bool
     
     var body: some View {
         HStack(alignment: .center, spacing: 0.0) {
-            if (number != nil) {
-                Text("\(number ?? 0)")
+            if visible {
+                if (number != nil) {
+                    Text("\(number ?? 0)")
+                        .foregroundColor(Color(UIColor.label))
+                }
+                Image(image)
+                    .renderingMode(.template)
                     .foregroundColor(Color(UIColor.label))
             }
-            Image(image)
-                .renderingMode(.template)
-                .foregroundColor(Color(UIColor.label))
         }
     }
 }
@@ -89,64 +93,73 @@ struct GameModeWidgetViewPreview: PreviewProvider {
 
         InfoView(
             number: 2,
-            image: "ic_group_length"
+            image: "ic_group_length",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
         InfoView(
             number: nil,
-            image: "ic_preview"
+            image: "ic_preview",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
         InfoView(
             number: nil,
-            image: "ic_no_preview"
+            image: "ic_no_preview",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
         InfoView(
             number: 2,
-            image: "ic_num_of_group"
+            image: "ic_num_of_group",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
         InfoView(
             number: 2,
-            image: "ic_time_limit"
+            image: "ic_time_limit",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
         InfoView(
             number: 2,
-            image: "ic_click_limit"
+            image: "ic_click_limit",
+            visible: true
         )
         .previewLayout(.sizeThatFits)
         
-        MenuOptionView {
-        } content: {
+        MenuOptionView(
+            bgColor: .clear,
+            onClick: {},
+            onHold: {}
+        ){
             GameModeView(
                 groupLength: 3,
-                numOfGroup: 2,
                 preview: false,
-                clickLimit: 2,
-                timeLimit: 3
+                numOfGroup: 2,
+                timeLimit: nil,
+                clickLimit: 2
             )
         }
         .previewDisplayName("game mode menu option")
-                                .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)
             .previewLayout(.sizeThatFits)
 
         GameModeView(
             groupLength: 3,
-            numOfGroup: 2,
             preview: true,
-            clickLimit: nil,
-            timeLimit: nil
+            numOfGroup: 2,
+            timeLimit: 2,
+            clickLimit: nil
         )
             .previewDisplayName("menu option game mode")
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)
             .previewLayout(.sizeThatFits)
     }
