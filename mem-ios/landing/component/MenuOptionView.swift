@@ -20,13 +20,22 @@ import SwiftUI
  */
 struct MenuOptionView<Content : View>: View {
     
-    let bgColor: Color = .gray
+    let bgColor: Color
     let onClick: () -> Void
+    let onHold: () -> Void
     @ViewBuilder let  content: () -> Content
+    @State private var longPress: Bool = false
     
     var body: some View {
         Button {
-            onClick()
+            if longPress{
+                onHold()
+                longPress.toggle()
+            }
+            else{
+                onClick()
+                
+            }
         }label: {
             content()
         }
@@ -41,6 +50,11 @@ struct MenuOptionView<Content : View>: View {
             RoundedRectangle(cornerRadius: menuOptionRoundedCornerRadius)
                 .stroke(Color(UIColor.label), lineWidth: menuOptionBoarderWidth)
         )
+        .simultaneousGesture(
+            LongPressGesture(minimumDuration: 0.1).onEnded({ _ in
+                self.longPress = true
+            })
+        )
         .background(bgColor)
         .cornerRadius(menuOptionRoundedCornerRadius)
     }
@@ -49,11 +63,10 @@ struct MenuOptionView<Content : View>: View {
 struct MenuOptionVeiwPreview: PreviewProvider {
     static var previews: some View {
         MenuOptionView(
-            onClick: {
-                
-            }, content: {
-
-            }
+            bgColor: .clear,
+            onClick: {},
+            onHold: {},
+            content: {}
         )
         .frame(width: 145.0, height: 145.0)
         .previewLayout(.sizeThatFits)
