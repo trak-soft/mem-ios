@@ -58,15 +58,23 @@ struct OptionView: View {
                         let clickLimit,
                         let timeLimit
                     ):
-                        GameModeView(
-                            groupLength: groupLenght,
-                            preview: preview,
-                            numOfGroup: numOfGroup,
-                            timeLimit: timeLimit,
-                            clickLimit: clickLimit
-                        )
+                        NavigationLink{
+                            PlayScreen()
+                        }label:{
+                            GameModeView(
+                                groupLength: groupLenght,
+                                preview: preview,
+                                numOfGroup: numOfGroup,
+                                timeLimit: timeLimit,
+                                clickLimit: clickLimit
+                            )
+                        }
                     case .Add:
-                        AddGameView()
+                        NavigationLink{
+                            CreateScreen()
+                        }label: {
+                            AddGameView()
+                        }
                     }
                 }.padding(.all, optionViewPadding)
                 .aspectRatio(1.0, contentMode: .fill)

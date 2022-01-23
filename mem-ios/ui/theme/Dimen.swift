@@ -14,4 +14,4 @@ let titleViewSpaceBetween = 5.0
 let optionViewPadding = 15.0
 let landingScreenFirstSpacer = 50.0
 let landingScreenSecondSpacer = 60.0
-let landingScreenOptionViewPadding = 20.0
+let landingScreenOptionViewPadding = 0.0
