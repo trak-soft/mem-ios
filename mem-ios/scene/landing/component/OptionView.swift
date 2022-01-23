@@ -35,32 +35,30 @@ struct OptionView: View {
     let onHold: (OptionType) -> Void
     
     var body: some View {
-        LazyVGrid(
-            columns:  Array(repeating: .init(.flexible(minimum: 40), spacing: 0), count: rowCount),
-            alignment: .center,
-            spacing: 0
-        ) {
-            ForEach(options,id: \.self) { option in
-                MenuOptionView(
-                    bgColor: bgColor,
-                    onClick: {
-                        onClick(option)
-                    },
-                    onHold: {
-                        onHold(option)
-                    }
-                ){
-                    switch option {
-                    case .Mode(
-                        let groupLenght,
-                        let preview,
-                        let numOfGroup,
-                        let clickLimit,
-                        let timeLimit
-                    ):
-                        NavigationLink{
-                            PlayScreen()
-                        }label:{
+        ScrollView {
+            LazyVGrid(
+                columns:  Array(repeating: .init(.flexible(minimum: 40), spacing: 0), count: rowCount),
+                alignment: .center,
+                spacing: 0
+            ) {
+                ForEach(options,id: \.self) { option in
+                    MenuOptionView(
+                        bgColor: bgColor,
+                        onClick: {
+                            onClick(option)
+                        },
+                        onHold: {
+                            onHold(option)
+                        }
+                    ){
+                        switch option {
+                        case .Mode(
+                            let groupLenght,
+                            let preview,
+                            let numOfGroup,
+                            let clickLimit,
+                            let timeLimit
+                        ):
                             GameModeView(
                                 groupLength: groupLenght,
                                 preview: preview,
@@ -68,16 +66,12 @@ struct OptionView: View {
                                 timeLimit: timeLimit,
                                 clickLimit: clickLimit
                             )
-                        }
-                    case .Add:
-                        NavigationLink{
-                            CreateScreen()
-                        }label: {
+                        case .Add:
                             AddGameView()
                         }
-                    }
-                }.padding(.all, optionViewPadding)
-                .aspectRatio(1.0, contentMode: .fill)
+                    }.padding(.all, optionViewPadding)
+                    .aspectRatio(1.0, contentMode: .fill)
+                }
             }
         }
     }
@@ -90,7 +84,12 @@ struct OptionView_Previews: PreviewProvider {
                 OptionType.Add,
                 OptionType.Mode(groupLenght: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
                 OptionType.Mode(groupLenght: 1,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 1, preview: false, numOfGroup: 5, timeLimit: nil, clickLimit: nil),
+                OptionType.Mode(groupLenght: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLenght: 4,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLenght: 5,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLenght: 6,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLenght: 7,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLenght: 9, preview: false, numOfGroup: 5, timeLimit: nil, clickLimit: nil),
             ],
             bgColor: .clear,
             rowCount: 2

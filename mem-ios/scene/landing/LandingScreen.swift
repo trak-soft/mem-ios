@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LandingScreen: View {
-    @EnvironmentObject var viewModel: LandingViewModel
+    @EnvironmentObject private var viewModel: LandingViewModel
+    @State private var isLinkActive = false
+    @State private var destintion = AnyView(PlayScreen())
     
     var body: some View {
         NavigationView{
@@ -32,16 +34,21 @@ struct LandingScreen: View {
                         let timeLimit,
                         let clickLimit
                     ):
-                        break
+                        destintion = AnyView(PlayScreen(text:"\(groupLenght)"))
                     case .Add:
-                        break
+                        destintion = AnyView(CreateScreen())
                     }
+                    self.isLinkActive = true
                 } onHold: { option in
-                    
                 }
+                .background(
+                    NavigationLink(destination: destintion, isActive: $isLinkActive) {
+                        EmptyView()
+                    }
+                    .hidden()
+                )
                 .padding(.all, landingScreenOptionViewPadding)
-                Spacer()
-            }.offset( y: -70.0)
+            }.navigationBarHidden(true)
         }
     }
 }
@@ -49,9 +56,7 @@ struct LandingScreen: View {
 struct LandingScreen_Previews: PreviewProvider {
     static var previews: some View {
         LandingScreen()
-            .environmentObject(LandingViewModel())
-            .preferredColorScheme(.dark)
-        LandingScreen()
+            .previewDevice("iPhone 12")
             .environmentObject(LandingViewModel())
             .preferredColorScheme(.light)
     }

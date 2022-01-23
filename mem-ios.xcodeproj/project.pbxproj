@@ -20,6 +20,8 @@
 		BA8012AC2796873200A862E6 /* AddGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* AddGameView.swift */; };
 		BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* MenuOptionView.swift */; };
 		BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89F4F3279AD4A700D760DD /* OptionView.swift */; };
+		BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */; };
+		BA9D79FF279CCACA00D1CFF7 /* CreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */; };
 		BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9FD2C2796DB5F001DC263 /* Dimen.swift */; };
 		BAFB0632279B52B80089CAEB /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB0631279B52B70089CAEB /* TitleView.swift */; };
 		BAFB0635279B59F00089CAEB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAFB0634279B59F00089CAEB /* Localizable.strings */; };
@@ -59,6 +61,8 @@
 		BA8012AB2796873200A862E6 /* AddGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGameView.swift; sourceTree = "<group>"; };
 		BA8012AD2796875300A862E6 /* MenuOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionView.swift; sourceTree = "<group>"; };
 		BA89F4F3279AD4A700D760DD /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
+		BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreen.swift; sourceTree = "<group>"; };
 		BAB9FD2C2796DB5F001DC263 /* Dimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimen.swift; sourceTree = "<group>"; };
 		BAFB0631279B52B70089CAEB /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		BAFB0634279B59F00089CAEB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -112,10 +116,10 @@
 		BA0ACC0227905AA20047BE8C /* mem-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BA9D79F9279CCA5200D1CFF7 /* scene */,
 				BAFB0633279B58460089CAEB /* res */,
 				BAFB062F279B524D0089CAEB /* common */,
 				BAB9FD2A2796D964001DC263 /* ui */,
-				BA8012A92796871100A862E6 /* landing */,
 				BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */,
 				BA0ACC0527905AA20047BE8C /* ContentView.swift */,
 				BA0ACC0927905AA50047BE8C /* Preview Content */,
@@ -167,6 +171,32 @@
 				BA89F4F3279AD4A700D760DD /* OptionView.swift */,
 			);
 			path = component;
+			sourceTree = "<group>";
+		};
+		BA9D79F9279CCA5200D1CFF7 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				BA9D79FB279CCA8100D1CFF7 /* play */,
+				BA9D79FA279CCA6D00D1CFF7 /* create */,
+				BA8012A92796871100A862E6 /* landing */,
+			);
+			path = scene;
+			sourceTree = "<group>";
+		};
+		BA9D79FA279CCA6D00D1CFF7 /* create */ = {
+			isa = PBXGroup;
+			children = (
+				BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */,
+			);
+			path = create;
+			sourceTree = "<group>";
+		};
+		BA9D79FB279CCA8100D1CFF7 /* play */ = {
+			isa = PBXGroup;
+			children = (
+				BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */,
+			);
+			path = play;
 			sourceTree = "<group>";
 		};
 		BAB9FD2A2796D964001DC263 /* ui */ = {
@@ -342,6 +372,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */,
+				BA9D79FF279CCACA00D1CFF7 /* CreateScreen.swift in Sources */,
+				BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */,
 				BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */,
 				BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */,
 				BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */,

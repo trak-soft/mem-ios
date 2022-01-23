@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PlayScreen: View {
+    var text = "Play"
     var body: some View {
-        Text("Play")
+        Text(text)
     }
 }
 
