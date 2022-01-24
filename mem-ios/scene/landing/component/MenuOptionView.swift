@@ -30,11 +30,6 @@ struct MenuOptionView<Content : View>: View {
         Button {
             if longPress{
                 onHold()
-                longPress.toggle()
-            }
-            else{
-                onClick()
-                
             }
         }label: {
             content()
@@ -51,10 +46,14 @@ struct MenuOptionView<Content : View>: View {
                 .stroke(Color(UIColor.label), lineWidth: menuOptionBoarderWidth)
         )
         .simultaneousGesture(
-            LongPressGesture(minimumDuration: 0.1).onEnded({ _ in
+            LongPressGesture(minimumDuration: 1.0).onEnded({ _ in
                 self.longPress = true
             })
         )
+        .highPriorityGesture(TapGesture().onEnded { _ in
+            onClick()
+        })
+        
         .background(bgColor)
         .cornerRadius(menuOptionRoundedCornerRadius)
     }
