@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LandingScreen: View {
-    @EnvironmentObject private var viewModel: LandingViewModel
+    @ObservedObject private var viewModel: LandingViewModel = LandingViewModel()
     @State private var isLinkActive = false
     @State private var destintion = AnyView(PlayScreen())
     
@@ -47,7 +47,7 @@ struct LandingScreen: View {
                     }
                     .hidden()
                 )
-                .padding(.all, landingScreenOptionViewPadding)
+                .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
             }.navigationBarHidden(true)
         }
     }
@@ -57,7 +57,6 @@ struct LandingScreen_Previews: PreviewProvider {
     static var previews: some View {
         LandingScreen()
             .previewDevice("iPhone 12")
-            .environmentObject(LandingViewModel())
             .preferredColorScheme(.light)
     }
 }
