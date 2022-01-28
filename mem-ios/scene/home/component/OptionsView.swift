@@ -8,29 +8,17 @@
 import SwiftUI
 
 /**
- option type
- */
-enum OptionType: Hashable {
-    case Mode(groupLenght: Int,
-              preview: Bool,
-              numOfGroup: Int,
-              timeLimit: Int?,
-              clickLimit: Int?
-    )
-    case Add
-}
-
-/**
  Option View
  
 - Parameter options - list of optionType
 - Parameter rowCount - size of row
 - Parameter padding - element padding
 */
-struct OptionView: View {
-    let options: [OptionType]
-    let bgColor: Color
+struct OptionsView: View {
+    var options: [OptionType]
     let rowCount: Int
+    var backgroundColor: Color
+    var tint: Color
     let onClick: (OptionType) -> Void
     let onHold: (OptionType) -> Void
     
@@ -42,8 +30,9 @@ struct OptionView: View {
                 spacing: 0
             ) {
                 ForEach(options,id: \.self) { option in
-                    MenuOptionView(
-                        bgColor: bgColor,
+                    OptionContentView(
+                        backgroundColor: backgroundColor,
+                        tint: tint,
                         onClick: {
                             onClick(option)
                         },
@@ -59,15 +48,19 @@ struct OptionView: View {
                             let clickLimit,
                             let timeLimit
                         ):
-                            GameModeView(
+                            OptionModeView(
                                 groupLength: groupLenght,
                                 preview: preview,
                                 numOfGroup: numOfGroup,
                                 timeLimit: timeLimit,
-                                clickLimit: clickLimit
+                                clickLimit: clickLimit,
+                                tint: tint
                             )
                         case .Add:
-                            AddGameView()
+                            OptionImageView(
+                                icon: "ic_add_game",
+                                tint: tint
+                            )
                         }
                     }.padding(.all, optionViewPadding)
                     .aspectRatio(1.0, contentMode: .fill)
@@ -79,7 +72,7 @@ struct OptionView: View {
 
 struct OptionView_Previews: PreviewProvider {
     static var previews: some View {
-        OptionView(
+        OptionsView(
             options: [
                 OptionType.Add,
                 OptionType.Mode(groupLenght: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
@@ -91,8 +84,9 @@ struct OptionView_Previews: PreviewProvider {
                 OptionType.Mode(groupLenght: 7,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
                 OptionType.Mode(groupLenght: 9, preview: false, numOfGroup: 5, timeLimit: nil, clickLimit: nil),
             ],
-            bgColor: .clear,
-            rowCount: 2
+            rowCount: 2,
+            backgroundColor: .clear,
+            tint: Color(UIColor.label)
         ) { option in
             
         } onHold: { option in

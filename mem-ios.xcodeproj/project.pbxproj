@@ -14,15 +14,19 @@
 		BA0ACC1527905AA60047BE8C /* mem_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC1427905AA60047BE8C /* mem_iosTests.swift */; };
 		BA0ACC1F27905AA60047BE8C /* mem_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC1E27905AA60047BE8C /* mem_iosUITests.swift */; };
 		BA0ACC2127905AA60047BE8C /* mem_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */; };
-		BA3A6BF5279C51F60062D216 /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF4279C51F60062D216 /* LandingScreen.swift */; };
-		BA3A6BF7279C83F20062D216 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF6279C83F20062D216 /* LandingViewModel.swift */; };
-		BA49EBA62797DD3800C67D52 /* GameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* GameModeView.swift */; };
-		BA8012AC2796873200A862E6 /* AddGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* AddGameView.swift */; };
-		BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* MenuOptionView.swift */; };
-		BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89F4F3279AD4A700D760DD /* OptionView.swift */; };
+		BA3A6BF5279C51F60062D216 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF4279C51F60062D216 /* HomeScreen.swift */; };
+		BA3A6BF7279C83F20062D216 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */; };
+		BA49EBA62797DD3800C67D52 /* OptionModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* OptionModeView.swift */; };
+		BA8012AC2796873200A862E6 /* OptionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* OptionImageView.swift */; };
+		BA8012AE2796875300A862E6 /* OptionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* OptionContentView.swift */; };
+		BA89F4F4279AD4A700D760DD /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89F4F3279AD4A700D760DD /* OptionsView.swift */; };
 		BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */; };
-		BA9D79FF279CCACA00D1CFF7 /* CreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */; };
+		BA9D79FF279CCACA00D1CFF7 /* EditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FE279CCACA00D1CFF7 /* EditScreen.swift */; };
 		BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9FD2C2796DB5F001DC263 /* Dimen.swift */; };
+		BAD5913A27A398C80037CCBE /* OptionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5913927A398C80037CCBE /* OptionType.swift */; };
+		BAD5913C27A399DB0037CCBE /* PlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5913B27A399DB0037CCBE /* PlayViewModel.swift */; };
+		BAD5913E27A39A260037CCBE /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5913D27A39A260037CCBE /* EditViewModel.swift */; };
+		BAD5914027A39C3F0037CCBE /* TextIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD5913F27A39C3F0037CCBE /* TextIconView.swift */; };
 		BAFB0632279B52B80089CAEB /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB0631279B52B70089CAEB /* TitleView.swift */; };
 		BAFB0635279B59F00089CAEB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BAFB0634279B59F00089CAEB /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -55,15 +59,19 @@
 		BA0ACC1A27905AA60047BE8C /* mem-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mem-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0ACC1E27905AA60047BE8C /* mem_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosUITests.swift; sourceTree = "<group>"; };
 		BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		BA3A6BF4279C51F60062D216 /* LandingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
-		BA3A6BF6279C83F20062D216 /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
-		BA49EBA52797DD3800C67D52 /* GameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeView.swift; sourceTree = "<group>"; };
-		BA8012AB2796873200A862E6 /* AddGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGameView.swift; sourceTree = "<group>"; };
-		BA8012AD2796875300A862E6 /* MenuOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionView.swift; sourceTree = "<group>"; };
-		BA89F4F3279AD4A700D760DD /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		BA3A6BF4279C51F60062D216 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BA49EBA52797DD3800C67D52 /* OptionModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModeView.swift; sourceTree = "<group>"; };
+		BA8012AB2796873200A862E6 /* OptionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionImageView.swift; sourceTree = "<group>"; };
+		BA8012AD2796875300A862E6 /* OptionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionContentView.swift; sourceTree = "<group>"; };
+		BA89F4F3279AD4A700D760DD /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
-		BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScreen.swift; sourceTree = "<group>"; };
+		BA9D79FE279CCACA00D1CFF7 /* EditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreen.swift; sourceTree = "<group>"; };
 		BAB9FD2C2796DB5F001DC263 /* Dimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimen.swift; sourceTree = "<group>"; };
+		BAD5913927A398C80037CCBE /* OptionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionType.swift; sourceTree = "<group>"; };
+		BAD5913B27A399DB0037CCBE /* PlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewModel.swift; sourceTree = "<group>"; };
+		BAD5913D27A39A260037CCBE /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		BAD5913F27A39C3F0037CCBE /* TextIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIconView.swift; sourceTree = "<group>"; };
 		BAFB0631279B52B70089CAEB /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		BAFB0634279B59F00089CAEB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,23 +160,23 @@
 			path = "mem-iosUITests";
 			sourceTree = "<group>";
 		};
-		BA8012A92796871100A862E6 /* landing */ = {
+		BA8012A92796871100A862E6 /* home */ = {
 			isa = PBXGroup;
 			children = (
 				BA8012AA2796871100A862E6 /* component */,
-				BA3A6BF4279C51F60062D216 /* LandingScreen.swift */,
-				BA3A6BF6279C83F20062D216 /* LandingViewModel.swift */,
+				BA3A6BF4279C51F60062D216 /* HomeScreen.swift */,
+				BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */,
 			);
-			path = landing;
+			path = home;
 			sourceTree = "<group>";
 		};
 		BA8012AA2796871100A862E6 /* component */ = {
 			isa = PBXGroup;
 			children = (
-				BA8012AB2796873200A862E6 /* AddGameView.swift */,
-				BA8012AD2796875300A862E6 /* MenuOptionView.swift */,
-				BA49EBA52797DD3800C67D52 /* GameModeView.swift */,
-				BA89F4F3279AD4A700D760DD /* OptionView.swift */,
+				BA8012AB2796873200A862E6 /* OptionImageView.swift */,
+				BA8012AD2796875300A862E6 /* OptionContentView.swift */,
+				BA49EBA52797DD3800C67D52 /* OptionModeView.swift */,
+				BA89F4F3279AD4A700D760DD /* OptionsView.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -177,24 +185,26 @@
 			isa = PBXGroup;
 			children = (
 				BA9D79FB279CCA8100D1CFF7 /* play */,
-				BA9D79FA279CCA6D00D1CFF7 /* create */,
-				BA8012A92796871100A862E6 /* landing */,
+				BA9D79FA279CCA6D00D1CFF7 /* edit */,
+				BA8012A92796871100A862E6 /* home */,
 			);
 			path = scene;
 			sourceTree = "<group>";
 		};
-		BA9D79FA279CCA6D00D1CFF7 /* create */ = {
+		BA9D79FA279CCA6D00D1CFF7 /* edit */ = {
 			isa = PBXGroup;
 			children = (
-				BA9D79FE279CCACA00D1CFF7 /* CreateScreen.swift */,
+				BA9D79FE279CCACA00D1CFF7 /* EditScreen.swift */,
+				BAD5913D27A39A260037CCBE /* EditViewModel.swift */,
 			);
-			path = create;
+			path = edit;
 			sourceTree = "<group>";
 		};
 		BA9D79FB279CCA8100D1CFF7 /* play */ = {
 			isa = PBXGroup;
 			children = (
 				BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */,
+				BAD5913B27A399DB0037CCBE /* PlayViewModel.swift */,
 			);
 			path = play;
 			sourceTree = "<group>";
@@ -215,9 +225,18 @@
 			path = theme;
 			sourceTree = "<group>";
 		};
+		BAD5913827A398AD0037CCBE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BAD5913927A398C80037CCBE /* OptionType.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		BAFB062F279B524D0089CAEB /* common */ = {
 			isa = PBXGroup;
 			children = (
+				BAD5913827A398AD0037CCBE /* model */,
 				BAFB0630279B52940089CAEB /* component */,
 			);
 			path = common;
@@ -226,6 +245,7 @@
 		BAFB0630279B52940089CAEB /* component */ = {
 			isa = PBXGroup;
 			children = (
+				BAD5913F27A39C3F0037CCBE /* TextIconView.swift */,
 				BAFB0631279B52B70089CAEB /* TitleView.swift */,
 			);
 			path = component;
@@ -371,16 +391,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA89F4F4279AD4A700D760DD /* OptionView.swift in Sources */,
-				BA9D79FF279CCACA00D1CFF7 /* CreateScreen.swift in Sources */,
+				BAD5913E27A39A260037CCBE /* EditViewModel.swift in Sources */,
+				BAD5913C27A399DB0037CCBE /* PlayViewModel.swift in Sources */,
+				BAD5913A27A398C80037CCBE /* OptionType.swift in Sources */,
+				BA89F4F4279AD4A700D760DD /* OptionsView.swift in Sources */,
+				BA9D79FF279CCACA00D1CFF7 /* EditScreen.swift in Sources */,
 				BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */,
+				BAD5914027A39C3F0037CCBE /* TextIconView.swift in Sources */,
 				BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */,
-				BA8012AE2796875300A862E6 /* MenuOptionView.swift in Sources */,
+				BA8012AE2796875300A862E6 /* OptionContentView.swift in Sources */,
 				BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */,
-				BA3A6BF5279C51F60062D216 /* LandingScreen.swift in Sources */,
-				BA49EBA62797DD3800C67D52 /* GameModeView.swift in Sources */,
-				BA3A6BF7279C83F20062D216 /* LandingViewModel.swift in Sources */,
-				BA8012AC2796873200A862E6 /* AddGameView.swift in Sources */,
+				BA3A6BF5279C51F60062D216 /* HomeScreen.swift in Sources */,
+				BA49EBA62797DD3800C67D52 /* OptionModeView.swift in Sources */,
+				BA3A6BF7279C83F20062D216 /* HomeViewModel.swift in Sources */,
+				BA8012AC2796873200A862E6 /* OptionImageView.swift in Sources */,
 				BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */,
 				BAFB0632279B52B80089CAEB /* TitleView.swift in Sources */,
 			);
