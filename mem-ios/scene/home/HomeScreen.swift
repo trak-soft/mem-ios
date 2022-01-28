@@ -39,7 +39,7 @@ struct HomeScreen: View {
                         let timeLimit,
                         let clickLimit
                     ):
-                        destintion = AnyView(PlayScreen(text:"\(groupLenght)"))
+                        destintion = AnyView(PlayScreen())
                     case .Add:
                         destintion = AnyView(EditScreen())
                     }

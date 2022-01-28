@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct PlayScreen: View {
-    var text = "Play"
+    @ObservedObject private var viewModel: PlayViewModel = PlayViewModel()
     var body: some View {
-        Text(text)
+        VStack(alignment: .center){
+            Spacer().frame(height: landingScreenFirstSpacer)
+            TitleView(
+                title: viewModel.title,
+                icon: viewModel.image,
+                tint: viewModel.tint
+            )
+            Spacer()
+        }
     }
 }
 

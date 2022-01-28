@@ -30,22 +30,19 @@ struct OptionModeView: View {
                 TextIconView(
                     text: "\(groupLength)",
                     icon: "ic_group_length",
-                    tint: tint,
-                    visible: true
+                    tint: tint
                 )
                 Spacer()
                 TextIconView(
                     text: nil,
                     icon: "ic_preview",
-                    tint: tint,
-                    visible: true
+                    tint: tint
                 )
                 Spacer()
                 TextIconView(
                     text: "\(numOfGroup)",
                     icon: "ic_num_of_group",
-                    tint: tint,
-                    visible: true
+                    tint: tint
                 )
             }
             Spacer()
