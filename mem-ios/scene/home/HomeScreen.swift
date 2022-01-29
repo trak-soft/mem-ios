@@ -7,10 +7,13 @@
 
 import SwiftUI
 
-struct LandingScreen: View {
-    @EnvironmentObject private var viewModel: LandingViewModel
+struct HomeScreen: View {
+    @ObservedObject private var viewModel: HomeViewModel = HomeViewModel()
     @State private var isLinkActive = false
     @State private var destintion = AnyView(PlayScreen())
+    
+    var tint: Color = Color(UIColor.label)
+    var optionColor: Color = Color(UIColor.label.withAlphaComponent(0.05))
     
     var body: some View {
         NavigationView{
@@ -18,13 +21,15 @@ struct LandingScreen: View {
                 Spacer().frame(height: landingScreenFirstSpacer)
                 TitleView(
                     title: viewModel.title,
-                    image: viewModel.image
+                    icon: viewModel.image,
+                    tint: tint
                 )
                 Spacer().frame(height: landingScreenSecondSpacer)
-                OptionView(
+                OptionsView(
                     options: viewModel.options,
-                    bgColor: Color(UIColor.label.withAlphaComponent(0.05)),
-                    rowCount: 2
+                    rowCount: 2,
+                    backgroundColor: optionColor,
+                    tint: tint
                 ) { option in
                     switch(option){
                     case .Mode(
@@ -34,9 +39,9 @@ struct LandingScreen: View {
                         let timeLimit,
                         let clickLimit
                     ):
-                        destintion = AnyView(PlayScreen(text:"\(groupLenght)"))
+                        destintion = AnyView(PlayScreen())
                     case .Add:
-                        destintion = AnyView(CreateScreen())
+                        destintion = AnyView(EditScreen())
                     }
                     self.isLinkActive = true
                 } onHold: { option in
@@ -47,17 +52,16 @@ struct LandingScreen: View {
                     }
                     .hidden()
                 )
-                .padding(.all, landingScreenOptionViewPadding)
+                .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
             }.navigationBarHidden(true)
         }
     }
 }
 
-struct LandingScreen_Previews: PreviewProvider {
+struct HomeScreenPreviews: PreviewProvider {
     static var previews: some View {
-        LandingScreen()
+        HomeScreen()
             .previewDevice("iPhone 12")
-            .environmentObject(LandingViewModel())
             .preferredColorScheme(.light)
     }
 }

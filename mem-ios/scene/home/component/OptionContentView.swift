@@ -18,9 +18,10 @@ import SwiftUI
  - Parameter bgColor: backgorund color of view
  - Parameter onClick: child view
  */
-struct MenuOptionView<Content : View>: View {
+struct OptionContentView<Content : View>: View {
     
-    let bgColor: Color
+    let backgroundColor: Color
+    var tint: Color
     let onClick: () -> Void
     let onHold: () -> Void
     @ViewBuilder let  content: () -> Content
@@ -43,7 +44,7 @@ struct MenuOptionView<Content : View>: View {
             )
         .overlay(
             RoundedRectangle(cornerRadius: menuOptionRoundedCornerRadius)
-                .stroke(Color(UIColor.label), lineWidth: menuOptionBoarderWidth)
+                .stroke(tint, lineWidth: menuOptionBoarderWidth)
         )
         .simultaneousGesture(
             LongPressGesture(minimumDuration: 1.0).onEnded({ _ in
@@ -54,15 +55,16 @@ struct MenuOptionView<Content : View>: View {
             onClick()
         })
         
-        .background(bgColor)
+        .background(backgroundColor)
         .cornerRadius(menuOptionRoundedCornerRadius)
     }
 }
 
 struct MenuOptionVeiwPreview: PreviewProvider {
     static var previews: some View {
-        MenuOptionView(
-            bgColor: .clear,
+        OptionContentView(
+            backgroundColor: .clear,
+            tint: Color(UIColor.label),
             onClick: {},
             onHold: {},
             content: {}

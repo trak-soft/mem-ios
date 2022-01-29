@@ -9,24 +9,29 @@ import SwiftUI
 
 struct TitleView: View {
     let title: String
-    let image: String
+    let icon: String
+    let tint: Color
     
     var body: some View {
-        HStack(alignment: .center, spacing: titleViewSpaceBetween) {
-            Text(title.uppercased())
-                .foregroundColor(Color(UIColor.label))
-                .font(.largeTitle)
-            Image(image)
-                .renderingMode(.template)
-                .foregroundColor(Color(UIColor.label))
-        }
+        TextIconView(
+            text: title.uppercased(),
+            icon: icon,
+            fontSize: 42.0,
+            fontWeight: .medium,
+            tint: tint,
+            imageSize: titleViewImageSize,
+            space: titleViewSpaceBetween
+        )
     }
 }
 
-struct TitleView_Previews: PreviewProvider {
+struct TitleViewPreviews: PreviewProvider {
     static var previews: some View {
-        TitleView(title: NSLocalizedString("memory", comment: ""), image: "ic_no_preview")
-            .preferredColorScheme(.light)
-            .previewLayout(.sizeThatFits)
+        TitleView(
+            title: NSLocalizedString("memory", comment: ""),
+            icon: "ic_add_game",
+            tint: Color(UIColor.label)
+        ).preferredColorScheme(.light)
+        .previewLayout(.sizeThatFits)
     }
 }

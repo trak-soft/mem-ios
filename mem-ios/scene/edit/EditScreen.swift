@@ -1,5 +1,5 @@
 //
-//  PlayScreen.swift
+//  CreateScreen.swift
 //  mem-ios
 //
 //  Created by Emmanuel Kareem on 1/22/22.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct PlayScreen: View {
-    @ObservedObject private var viewModel: PlayViewModel = PlayViewModel()
+struct EditScreen: View {
+    @ObservedObject private var viewModel: EditViewModel = EditViewModel()
     var body: some View {
         VStack(alignment: .center){
             Spacer().frame(height: landingScreenFirstSpacer)
@@ -22,8 +22,8 @@ struct PlayScreen: View {
     }
 }
 
-struct PlayScreen_Previews: PreviewProvider {
+struct EditScreenPreviews: PreviewProvider {
     static var previews: some View {
-        PlayScreen()
+        EditScreen()
     }
 }
