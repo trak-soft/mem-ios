@@ -25,34 +25,37 @@ struct HomeScreen: View {
                     tint: tint
                 )
                 Spacer().frame(height: landingScreenSecondSpacer)
-                OptionsView(
-                    options: viewModel.options,
-                    rowCount: 2,
-                    backgroundColor: optionColor,
-                    tint: tint
-                ) { option in
-                    switch(option){
-                    case .Mode(
-                        let groupLenght,
-                        let preview,
-                        let numOfGroup,
-                        let timeLimit,
-                        let clickLimit
-                    ):
-                        destintion = AnyView(PlayScreen())
-                    case .Add:
-                        destintion = AnyView(EditScreen())
+                ScrollView {
+                    OptionsView(
+                        options: viewModel.options,
+                        rowCount: 2,
+                        backgroundColor: optionColor,
+                        tint: tint
+                    ) { option in
+                        switch(option){
+                        case .Mode(
+                            let groupLenght,
+                            let preview,
+                            let numOfGroup,
+                            let timeLimit,
+                            let clickLimit
+                        ):
+                            destintion = AnyView(PlayScreen())
+                        case .Add:
+                            destintion = AnyView(EditScreen())
+                        }
+                        self.isLinkActive = true
+                        print("fsdghgdg")
+                    } onHold: { option in
                     }
-                    self.isLinkActive = true
-                } onHold: { option in
+                    .background(
+                        NavigationLink(destination: destintion, isActive: $isLinkActive) {
+                            EmptyView()
+                        }
+                        .hidden()
+                    )
+                    .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
                 }
-                .background(
-                    NavigationLink(destination: destintion, isActive: $isLinkActive) {
-                        EmptyView()
-                    }
-                    .hidden()
-                )
-                .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
             }.navigationBarHidden(true)
         }
     }
@@ -62,6 +65,6 @@ struct HomeScreenPreviews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
             .previewDevice("iPhone 12")
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }

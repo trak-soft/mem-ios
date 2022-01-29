@@ -19,7 +19,7 @@ struct TitleView: View {
             fontSize: 42.0,
             fontWeight: .medium,
             tint: tint,
-            imageSize: titleViewImageSize,
+            iconSize: titleViewImageSize,
             space: titleViewSpaceBetween
         )
     }
