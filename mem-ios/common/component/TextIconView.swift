@@ -19,7 +19,7 @@ struct TextIconView: View {
     var fontWeight: Font.Weight? = nil
     var letterSpacing: CGFloat? = nil
     var tint: Color? = nil
-    var imageSize: CGFloat? = nil
+    var iconSize: CGFloat? = nil
     var space: CGFloat = 0.0
     var visible: Bool = true
     
@@ -33,7 +33,6 @@ struct TextIconView: View {
                         .font(.system(size: fontSize ?? 20.0))
                         .fontWeight(fontWeight)
                         .tracking(letterSpacing ?? 0.15)
-                        //.foregroundColor(Color(UIColor.label))
                 }
                 Spacer().frame(width: space)
                 if (icon != nil){
@@ -44,7 +43,11 @@ struct TextIconView: View {
                         .resizable()
                         .scaledToFit()
                         .foregroundColor(tint)
-                        .frame(width: imageSize ?? uiImageView.frame.width, height: imageSize ?? uiImageView.frame.height, alignment: .center)
+                        .frame(
+                            width: iconSize ?? uiImageView.frame.width,
+                            height: iconSize ?? uiImageView.frame.height,
+                            alignment: .center
+                        )
                         
                 }
             }

@@ -23,48 +23,46 @@ struct OptionsView: View {
     let onHold: (OptionType) -> Void
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(
-                columns:  Array(repeating: .init(.flexible(minimum: 40), spacing: 0), count: rowCount),
-                alignment: .center,
-                spacing: 0
-            ) {
-                ForEach(options,id: \.self) { option in
-                    OptionContentView(
-                        backgroundColor: backgroundColor,
-                        tint: tint,
-                        onClick: {
-                            onClick(option)
-                        },
-                        onHold: {
-                            onHold(option)
-                        }
-                    ){
-                        switch option {
-                        case .Mode(
-                            let groupLenght,
-                            let preview,
-                            let numOfGroup,
-                            let clickLimit,
-                            let timeLimit
-                        ):
-                            OptionModeView(
-                                groupLength: groupLenght,
-                                preview: preview,
-                                numOfGroup: numOfGroup,
-                                timeLimit: timeLimit,
-                                clickLimit: clickLimit,
-                                tint: tint
-                            )
-                        case .Add:
-                            OptionImageView(
-                                icon: "ic_add_game",
-                                tint: tint
-                            )
-                        }
-                    }.padding(.all, optionViewPadding)
-                    .aspectRatio(1.0, contentMode: .fill)
-                }
+        LazyVGrid(
+            columns:  Array(repeating: .init(.flexible(minimum: 40), spacing: 0), count: rowCount),
+            alignment: .center,
+            spacing: 0
+        ) {
+            ForEach(options,id: \.self) { option in
+                OptionContentView(
+                    backgroundColor: backgroundColor,
+                    tint: tint,
+                    onClick: {
+                        onClick(option)
+                    },
+                    onHold: {
+                        onHold(option)
+                    }
+                ){
+                    switch option {
+                    case .Mode(
+                        let groupLenght,
+                        let preview,
+                        let numOfGroup,
+                        let clickLimit,
+                        let timeLimit
+                    ):
+                        OptionModeView(
+                            groupLength: groupLenght,
+                            preview: preview,
+                            numOfGroup: numOfGroup,
+                            timeLimit: timeLimit,
+                            clickLimit: clickLimit,
+                            tint: tint
+                        )
+                    case .Add:
+                        OptionImageView(
+                            icon: "ic_add_game",
+                            tint: tint
+                        )
+                    }
+                }.padding(.all, optionViewPadding)
+                .aspectRatio(1.0, contentMode: .fill)
             }
         }
     }
@@ -77,12 +75,7 @@ struct OptionView_Previews: PreviewProvider {
                 OptionType.Add,
                 OptionType.Mode(groupLenght: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
                 OptionType.Mode(groupLenght: 1,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 4,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 5,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 6,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 7,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 9, preview: false, numOfGroup: 5, timeLimit: nil, clickLimit: nil),
+                OptionType.Mode(groupLenght: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2)
             ],
             rowCount: 2,
             backgroundColor: .clear,
@@ -91,8 +84,7 @@ struct OptionView_Previews: PreviewProvider {
             
         } onHold: { option in
             
-        }.preferredColorScheme(.dark)
-            .previewLayout(.sizeThatFits)
+        }.previewLayout(.sizeThatFits).preferredColorScheme(.dark)
 
     }
 }
