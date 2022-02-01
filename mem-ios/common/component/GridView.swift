@@ -9,9 +9,10 @@ import SwiftUI
 
 struct GridView<Content: View>: View {
     let size: Int
+    var padding: CGFloat = 4.0
     var inf: Bool = false
     var rowCount: Int? = nil
-    @ViewBuilder let  content: () -> Content
+    @ViewBuilder let  content: (Int) -> Content
     
     var body: some View {
         GeometryReader{ reader in
@@ -23,7 +24,7 @@ struct GridView<Content: View>: View {
         let cw = reader.size.width
         let ch = reader.size.height
         let ratio = cw/ch
-        var (row, column) = getRowColumn(length: size, ratio: ratio, grace: 0.4)
+        var (row, column) = getRowColumn(length: size, ratio: ratio, grace: 0.4,inf: inf && rowCount != nil)
         row  = rowCount ?? row
         if rowCount != nil {
             column = Int(ceilf(Float(size) / Float(row)))
@@ -31,33 +32,37 @@ struct GridView<Content: View>: View {
         
         return ScrollView{
             LazyVGrid(
-            columns: Array(repeating: .init(.flexible()), count: row),
-            alignment: .center,
-            spacing: 0){
+                columns: Array(repeating: .init(.flexible()), count: row),
+                alignment: .center,
+                spacing: 0
+            ){
         
-            let w = cw / CGFloat(row)
-            
-            let s = { () -> CGFloat in
-                if w * CGFloat(column) > ch && !inf {
-                    return ch / CGFloat(column)
+                let w = cw / CGFloat(row)
+                
+                let s = { () -> CGFloat in
+                    if w * CGFloat(column) > ch && !inf {
+                        return ch / CGFloat(column)
+                    }
+                    else {
+                        return cw / CGFloat(row)
+                    }
+                }()
+                ForEach(0..<size) { it in
+                    content(it)
+                        .padding(.all, padding)
+                        .frame(
+                            width: s,
+                            height: s
+                        )
                 }
-                else {
-                    return cw / CGFloat(row)
-                }
-            }()
-            ForEach(0..<size) { it in
-                content()
-                    .padding(/*@START_MENU_TOKEN@*/.all, 5.0/*@END_MENU_TOKEN@*/)
-                    .frame(
-                        width: s,
-                        height: s
-                    )
             }
-        }
-        }.disabled(!inf)
+            }.disabled(!inf)
     }
     
-    func getRowColumn(length: Int, ratio: CGFloat, grace: CGFloat) -> (Int,Int){
+    func getRowColumn(length: Int, ratio: CGFloat, grace: CGFloat, inf: Bool = false) -> (Int,Int){
+        if inf {
+            return (1,length)
+        }
         var diff: CGFloat = .infinity
         var row = 1
         var col = length
@@ -85,7 +90,7 @@ struct GridView<Content: View>: View {
 
 struct GridView_Previews: PreviewProvider {
     static var previews: some View {
-        GridView(size: 12){
+        GridView(size: 12){ it in
             OptionContentView(
                 backgroundColor: .clear,
                 tint: Color(UIColor.label),

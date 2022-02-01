@@ -25,34 +25,65 @@ struct HomeScreen: View {
                     tint: tint
                 )
                 Spacer().frame(height: landingScreenSecondSpacer)
-                OptionsView(
-                    options: viewModel.options,
-                    rowCount: 2,
-                    backgroundColor: optionColor,
-                    tint: tint
-                ) { option in
-                    switch(option){
-                    case .Mode(
-                        let groupLenght,
-                        let preview,
-                        let numOfGroup,
-                        let timeLimit,
-                        let clickLimit
-                    ):
-                        destintion = AnyView(PlayScreen())
-                    case .Add:
-                        destintion = AnyView(EditScreen())
+                GridView(
+                    size: viewModel.options.count,
+                    padding: 10.0,
+                    inf: true,
+                    rowCount: 2
+                ) { index in
+                    let option = viewModel.options[index]
+                    OptionContentView(
+                        backgroundColor: optionColor,
+                        tint: tint,
+                        onClick: {
+                            
+                            switch(option){
+                            case .Mode(
+                                let groupLenght,
+                                let preview,
+                                let numOfGroup,
+                                let timeLimit,
+                                let clickLimit
+                            ):
+                                destintion = AnyView(PlayScreen())
+                            case .Add:
+                                destintion = AnyView(EditScreen())
+                            }
+                            self.isLinkActive = true
+                        },
+                        onHold: {
+                        
+                        }
+                    ){
+                        switch option {
+                        case .Mode(
+                            let groupLenght,
+                            let preview,
+                            let numOfGroup,
+                            let clickLimit,
+                            let timeLimit
+                        ):
+                            OptionModeView(
+                                groupLength: groupLenght,
+                                preview: preview,
+                                numOfGroup: numOfGroup,
+                                timeLimit: timeLimit,
+                                clickLimit: clickLimit,
+                                tint: tint
+                            )
+                        case .Add:
+                            OptionImageView(
+                                icon: "ic_add_game",
+                                tint: tint
+                            )
+                        }
                     }
-                    self.isLinkActive = true
-                } onHold: { option in
-                }
-                .background(
-                    NavigationLink(destination: destintion, isActive: $isLinkActive) {
-                        EmptyView()
-                    }
-                    .hidden()
-                )
-                .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
+                }.background(
+                        NavigationLink(destination: destintion, isActive: $isLinkActive) {
+                            EmptyView()
+                        }
+                        .hidden()
+                    )
             }.navigationBarHidden(true)
         }
     }
