@@ -25,37 +25,65 @@ struct HomeScreen: View {
                     tint: tint
                 )
                 Spacer().frame(height: landingScreenSecondSpacer)
-                ScrollView {
-                    OptionsView(
-                        options: viewModel.options,
-                        rowCount: 2,
+                GridView(
+                    size: viewModel.options.count,
+                    padding: 10.0,
+                    inf: true,
+                    rowCount: 2
+                ) { index in
+                    let option = viewModel.options[index]
+                    OptionContentView(
                         backgroundColor: optionColor,
-                        tint: tint
-                    ) { option in
-                        switch(option){
+                        tint: tint,
+                        onClick: {
+                            
+                            switch(option){
+                            case .Mode(
+                                let groupLenght,
+                                let preview,
+                                let numOfGroup,
+                                let timeLimit,
+                                let clickLimit
+                            ):
+                                destintion = AnyView(PlayScreen())
+                            case .Add:
+                                destintion = AnyView(EditScreen())
+                            }
+                            self.isLinkActive = true
+                        },
+                        onHold: {
+                        
+                        }
+                    ){
+                        switch option {
                         case .Mode(
                             let groupLenght,
                             let preview,
                             let numOfGroup,
-                            let timeLimit,
-                            let clickLimit
+                            let clickLimit,
+                            let timeLimit
                         ):
-                            destintion = AnyView(PlayScreen())
+                            OptionModeView(
+                                groupLength: groupLenght,
+                                preview: preview,
+                                numOfGroup: numOfGroup,
+                                timeLimit: timeLimit,
+                                clickLimit: clickLimit,
+                                tint: tint
+                            )
                         case .Add:
-                            destintion = AnyView(EditScreen())
+                            OptionImageView(
+                                icon: "ic_add_game",
+                                tint: tint
+                            )
                         }
-                        self.isLinkActive = true
-                        print("fsdghgdg")
-                    } onHold: { option in
                     }
-                    .background(
+                }.background(
                         NavigationLink(destination: destintion, isActive: $isLinkActive) {
                             EmptyView()
                         }
                         .hidden()
                     )
-                    .padding([.top, .leading, .trailing], landingScreenOptionViewPadding)
-                }
             }.navigationBarHidden(true)
         }
     }
@@ -65,6 +93,6 @@ struct HomeScreenPreviews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
             .previewDevice("iPhone 12")
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
     }
 }
