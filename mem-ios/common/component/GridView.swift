@@ -14,6 +14,22 @@ struct GridView<Content: View>: View {
     var rowCount: Int? = nil
     @ViewBuilder let  content: (Int) -> Content
     
+    init(
+        size: Int,
+        padding: CGFloat = 4.0,
+        inf: Bool = false,
+        rowCount: Int? = nil,
+        @ViewBuilder content: @escaping (Int) -> Content
+    ){
+        self.size = size
+        self.padding = padding
+        self.inf = inf
+        self.rowCount = rowCount
+        self.content = content
+        
+        UIScrollView.appearance().bounces = inf
+    }
+    
     var body: some View {
         GeometryReader{ reader in
             self.createView(reader: reader)
@@ -56,7 +72,7 @@ struct GridView<Content: View>: View {
                         )
                 }
             }
-            }.disabled(!inf)
+        }
     }
     
     func getRowColumn(length: Int, ratio: CGFloat, grace: CGFloat, inf: Bool = false) -> (Int,Int){

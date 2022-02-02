@@ -17,25 +17,29 @@ import SwiftUI
  - Parameter timeLimit - time limit to solve
  */
 struct OptionModeView: View {
-    var groupLength: Int
-    var preview: Bool
-    var numOfGroup: Int
-    var timeLimit: Int?
-    var clickLimit: Int?
+    let mode: OptionType
     var tint: Color = Color(UIColor.label)
     
     var body: some View {
+        if case .Mode(
+            let groupLenght,
+            let preview,
+            let numOfGroup,
+            let timeLimit,
+            let clickLimit
+        ) = mode{
+            
         VStack{
             HStack(alignment: .center){
                 TextIconView(
-                    text: "\(groupLength)",
+                    text: "\(groupLenght)",
                     icon: "ic_group_length",
                     tint: tint
                 )
                 Spacer()
                 TextIconView(
                     text: nil,
-                    icon: "ic_preview",
+                    icon: preview ? "ic_preview" : "ic_no_preview",
                     tint: tint
                 )
                 Spacer()
@@ -73,6 +77,7 @@ struct OptionModeView: View {
             }
         }
         .padding(.all, gameModePaddingViewPadding)
+        }
     }
 }
 
@@ -84,26 +89,26 @@ struct GameModeWidgetViewPreview: PreviewProvider {
             onClick: {},
             onHold: {}
         ){
-            OptionModeView(
+            OptionModeView(mode: .Mode(
                 groupLength: 3,
                 preview: false,
                 numOfGroup: 2,
                 timeLimit: nil,
                 clickLimit: 2
-            )
+            ))
         }
         .previewDisplayName("game mode menu option")
             .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)
             .previewLayout(.sizeThatFits)
 
-        OptionModeView(
+        OptionModeView(mode: .Mode(
             groupLength: 3,
-            preview: true,
+            preview: false,
             numOfGroup: 2,
-            timeLimit: 2,
-            clickLimit: nil
-        )
+            timeLimit: nil,
+            clickLimit: 2
+        ))
             .previewDisplayName("menu option game mode")
             .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)

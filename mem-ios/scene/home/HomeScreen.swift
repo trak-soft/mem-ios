@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @ObservedObject private var viewModel: HomeViewModel = HomeViewModel()
-    @State private var isLinkActive = false
-    @State private var destintion = AnyView(PlayScreen())
+    @ObservedObject private var viewModel: HomeViewModel = HomeViewModel(
+        tint: Color(UIColor.label),
+        optionColor: Color(UIColor.label.withAlphaComponent(0.05))
+    )
     
-    var tint: Color = Color(UIColor.label)
-    var optionColor: Color = Color(UIColor.label.withAlphaComponent(0.05))
+    @State private var isLinkActive = false
+    @State private var destintion = AnyView(EditScreen())
     
     var body: some View {
         NavigationView{
             VStack(alignment: .center){
-                Spacer().frame(height: landingScreenFirstSpacer)
+                Spacer().frame(height: screenFirstSpacer)
                 TitleView(
                     title: viewModel.title,
                     icon: viewModel.image,
-                    tint: tint
+                    tint: viewModel.tint
                 )
-                Spacer().frame(height: landingScreenSecondSpacer)
+                Spacer().frame(height: screenSecondSpacer)
                 GridView(
                     size: viewModel.options.count,
                     padding: 10.0,
@@ -33,19 +34,25 @@ struct HomeScreen: View {
                 ) { index in
                     let option = viewModel.options[index]
                     OptionContentView(
-                        backgroundColor: optionColor,
-                        tint: tint,
+                        backgroundColor: viewModel.optionColor,
+                        tint: viewModel.tint,
                         onClick: {
                             
                             switch(option){
                             case .Mode(
-                                let groupLenght,
+                                let groupLength,
                                 let preview,
                                 let numOfGroup,
                                 let timeLimit,
                                 let clickLimit
                             ):
-                                destintion = AnyView(PlayScreen())
+                                destintion = AnyView(PlayScreen(mode: .Mode(
+                                    groupLength: groupLength,
+                                    preview: preview,
+                                    numOfGroup: numOfGroup,
+                                    timeLimit: timeLimit,
+                                    clickLimit: clickLimit
+                                )))
                             case .Add:
                                 destintion = AnyView(EditScreen())
                             }
@@ -56,25 +63,15 @@ struct HomeScreen: View {
                         }
                     ){
                         switch option {
-                        case .Mode(
-                            let groupLenght,
-                            let preview,
-                            let numOfGroup,
-                            let clickLimit,
-                            let timeLimit
-                        ):
+                        case .Mode:
                             OptionModeView(
-                                groupLength: groupLenght,
-                                preview: preview,
-                                numOfGroup: numOfGroup,
-                                timeLimit: timeLimit,
-                                clickLimit: clickLimit,
-                                tint: tint
+                                mode: option,
+                                tint: viewModel.tint
                             )
                         case .Add:
                             OptionImageView(
                                 icon: "ic_add_game",
-                                tint: tint
+                                tint: viewModel.tint
                             )
                         }
                     }
@@ -84,7 +81,7 @@ struct HomeScreen: View {
                         }
                         .hidden()
                     )
-            }.navigationBarHidden(true)
+            }.padding(.horizontal, screenPadding).navigationBarHidden(true)
         }
     }
 }

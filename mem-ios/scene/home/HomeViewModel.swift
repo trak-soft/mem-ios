@@ -5,17 +5,34 @@
 //  Created by Emmanuel Kareem on 1/22/22.
 //
 
-import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    var title: String = "memory"
-    var image: String = "ic_brain"
+    let title: String
+    let image: String
+    let tint: Color
+    let optionColor: Color
+    
+    init(
+        title: String = "memory",
+        image: String = "ic_brain",
+        tint: Color  = Color(UIColor.label),
+        optionColor: Color  = Color(UIColor.label.withAlphaComponent(0.05))
+    ){
+        self.title = title
+        self.image = image
+        self.tint = tint
+        self.optionColor = optionColor
+    }
+    
     @Published var options: [OptionType] = [
         OptionType.Add,
-        OptionType.Mode(groupLenght: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLenght: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLenght: 4,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLenght: 5,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 4,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 5,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 9, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 6,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
     ]
 
 }

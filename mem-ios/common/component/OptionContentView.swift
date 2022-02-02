@@ -34,6 +34,13 @@ struct OptionContentView<Content : View>: View {
             }
         }label: {
             content()
+            .frame(
+                  minWidth: 0,
+                  maxWidth: .infinity,
+                  minHeight: 0,
+                  maxHeight: .infinity,
+                  alignment: .center
+                )
         }
         .frame(
               minWidth: 0,
@@ -54,7 +61,6 @@ struct OptionContentView<Content : View>: View {
         .highPriorityGesture(TapGesture().onEnded { _ in
             onClick()
         })
-        
         .background(backgroundColor)
         .cornerRadius(menuOptionRoundedCornerRadius)
     }

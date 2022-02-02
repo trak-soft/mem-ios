@@ -11,7 +11,7 @@ import Foundation
  oprion type
  */
 enum OptionType: Hashable {
-    case Mode(groupLenght: Int,
+    case Mode(groupLength: Int,
               preview: Bool,
               numOfGroup: Int,
               timeLimit: Int?,

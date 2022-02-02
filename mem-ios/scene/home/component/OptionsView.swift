@@ -40,19 +40,9 @@ struct OptionsView: View {
                     }
                 ){
                     switch option {
-                    case .Mode(
-                        let groupLenght,
-                        let preview,
-                        let numOfGroup,
-                        let clickLimit,
-                        let timeLimit
-                    ):
+                    case .Mode:
                         OptionModeView(
-                            groupLength: groupLenght,
-                            preview: preview,
-                            numOfGroup: numOfGroup,
-                            timeLimit: timeLimit,
-                            clickLimit: clickLimit,
+                            mode: option,
                             tint: tint
                         )
                     case .Add:
@@ -73,9 +63,9 @@ struct OptionView_Previews: PreviewProvider {
         OptionsView(
             options: [
                 OptionType.Add,
-                OptionType.Mode(groupLenght: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 1,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-                OptionType.Mode(groupLenght: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2)
+                OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLength: 1,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+                OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2)
             ],
             rowCount: 2,
             backgroundColor: .clear,

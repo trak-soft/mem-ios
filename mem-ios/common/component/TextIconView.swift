@@ -48,8 +48,7 @@ struct TextIconView: View {
                             height: iconSize ?? uiImageView.frame.height,
                             alignment: .center
                         )
-                        
-                }
+                }   
             }
         }
     }

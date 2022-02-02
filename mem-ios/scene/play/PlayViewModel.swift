@@ -9,7 +9,33 @@ import Foundation
 import SwiftUI
 
 class PlayViewModel: ObservableObject {
-    var title: String = NSLocalizedString("play", comment: "")
-    var image: String = "ic_add_game"
-    var tint: Color = Color(UIColor.label)
+    let mode: OptionType
+    let tint: Color
+    @Published var icons: [String] = []
+    @Published var timeLeft: Int? = nil
+    @Published var clicksLeft: Int? = nil
+    
+    init(
+        mode: OptionType,
+        tint: Color = Color(UIColor.label)
+    ){
+        self.mode = mode
+        self.tint = tint
+        
+        if case .Mode(
+            let groupLength,
+            _,
+            let numOfGroup,
+            let time,
+            let click
+        ) = mode {
+            self.timeLeft = time
+            self.clicksLeft = click
+            self.icons = Array(repeating: "ic_brain", count: groupLength * numOfGroup)
+        }
+    }
+    
+    func getIconAt(index: Int) -> String{
+        return icons[index]
+    }
 }
