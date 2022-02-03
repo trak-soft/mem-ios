@@ -87,11 +87,12 @@ struct GridView<Content: View>: View {
         while CGFloat(i) < sqrt(CGFloat(length)) {
             if length % i == 0 {
                 if length / i != i {
-                    col = length / i
-                    let neww = abs(CGFloat(i) / CGFloat(col) - ratio)
+                    let tcol = length / i
+                    let neww = abs(CGFloat(i) / CGFloat(tcol) - ratio)
                     if neww < diff {
                         diff = neww
                         row = i
+                        col = tcol
                     }
                 }
             }

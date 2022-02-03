@@ -34,7 +34,9 @@ struct OptionModeView: View {
                 TextIconView(
                     text: "\(groupLenght)",
                     icon: "ic_group_length",
-                    tint: tint
+                    fontSize: 17.0,
+                    tint: tint,
+                    iconSize: 17.0
                 )
                 Spacer()
                 TextIconView(
@@ -46,7 +48,9 @@ struct OptionModeView: View {
                 TextIconView(
                     text: "\(numOfGroup)",
                     icon: "ic_num_of_group",
-                    tint: tint
+                    fontSize: 17.0,
+                    tint: tint,
+                    iconSize: 17.0
                 )
             }
             Spacer()
@@ -59,7 +63,9 @@ struct OptionModeView: View {
                         return "\(timeLimit ?? 0)"
                     }(),
                     icon: "ic_time_limit",
+                    fontSize: 17.0,
                     tint: tint,
+                    iconSize: 17.0,
                     visible: timeLimit != nil
                 )
                 Spacer()
@@ -71,7 +77,9 @@ struct OptionModeView: View {
                         return "\(clickLimit ?? 0)"
                     }(),
                     icon: "ic_click_limit",
+                    fontSize: 17.0,
                     tint: tint,
+                    iconSize: 17.0,
                     visible: clickLimit != nil
                 )
             }

@@ -59,7 +59,10 @@ struct HomeScreen: View {
                             self.isLinkActive = true
                         },
                         onHold: {
-                        
+                            if case .Mode = option {
+                                destintion = AnyView(EditScreen())
+                                self.isLinkActive = true
+                            }
                         }
                     ){
                         switch option {
@@ -81,7 +84,9 @@ struct HomeScreen: View {
                         }
                         .hidden()
                     )
-            }.padding(.horizontal, screenPadding).navigationBarHidden(true)
+            }.padding(.horizontal, screenPadding)
+                .navigationBarHidden(true)
+                .ignoresSafeArea()
         }
     }
 }

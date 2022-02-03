@@ -24,13 +24,12 @@ struct HeaderView: View {
             )
             Spacer()
             Button {
-                print("asdkhs")
                 onReset()
             } label: {
                 Image("ic_reset")
-                    //.renderingMode(.template)
-                    //.tint(tint)
-                    //.frame(width: 32, height: 23, alignment: .center)
+                    .renderingMode(.template)
+                    .tint(tint)
+                    .frame(width: 32, height: 23, alignment: .center)
             }
             Spacer()
             TextIconView(

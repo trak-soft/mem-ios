@@ -18,7 +18,7 @@ struct EditScreen: View {
                 tint: viewModel.tint
             )
             Spacer()
-        }.offset( y: screenNavOffsetY)
+        }.ignoresSafeArea()
     }
 }
 

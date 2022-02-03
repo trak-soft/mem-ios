@@ -20,20 +20,14 @@ struct PlayScreen: View {
     }
     var body: some View {
         GeometryReader{reader in
-            ZStack{
-                if case .Mode(
-                    let groupLength,
-                    _,
-                    let numOfGroup,
-                    let timeLimit,
-                    let click
-                ) = viewModel.mode {
-                    if viewModel.timeLeft != nil && timeLimit != nil{
-                        var ratio: CGFloat = CGFloat(viewModel.timeLeft ?? 1) / CGFloat(timeLimit ?? 1)
-                        //ratio * reader.size.height
+            ZStack(alignment: .bottomTrailing){
+                if case .Mode(_,_,_,let timeLimit,_) = viewModel.mode {
+                    if viewModel.timeLeft != nil && timeLimit != nil {
+                        let height: CGFloat = reader.size.height * (CGFloat(viewModel.timeLeft ?? 1) / CGFloat(timeLimit ?? 1))
+                    
                         Rectangle()
                             .fill(viewModel.tint.opacity(0.05))
-                            .frame(width: reader.size.width, height: 200, alignment: .bottomTrailing)
+                            .frame(width: reader.size.width, height: height)
                         
                     }
                 }
@@ -64,11 +58,11 @@ struct PlayScreen: View {
                             )
                         }
                     }
+                    .padding(.bottom, 40.0)
                     
                 }.padding(.horizontal, screenPadding)
-                .offset( y: screenNavOffsetY)
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 
@@ -78,9 +72,10 @@ struct PlayScreen_Previews: PreviewProvider {
             groupLength: 3,
             preview: false,
             numOfGroup: 2,
-            timeLimit: nil,
+            timeLimit: 2,
             clickLimit: 2
             )
         )
+            .preferredColorScheme(.dark)
     }
 }

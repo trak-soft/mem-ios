@@ -27,12 +27,16 @@ class HomeViewModel: ObservableObject {
     
     @Published var options: [OptionType] = [
         OptionType.Add,
-        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLength: 4,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLength: 5,  preview: false, numOfGroup: 2, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 9, timeLimit: 2, clickLimit: 2),
         OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 9, timeLimit: 2, clickLimit: 2),
-        OptionType.Mode(groupLength: 6,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 10, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 14, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 4,  preview: false, numOfGroup: 10, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 15, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 15, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 4,  preview: false, numOfGroup: 8, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
     ]
 
 }
