@@ -10,43 +10,48 @@ import SwiftUI
 /**
  game mode view
  
- - Parameter groupLength - length of one group
- - Parameter numOfGroup - number of groups
- - Parameter preview - if board will be preview at the start
- - Parameter clickLimit - max number of click
- - Parameter timeLimit - time limit to solve
+ - Parameter mode - mode setting
+ - Parameter tint - tint color
  */
 struct OptionModeView: View {
-    var groupLength: Int
-    var preview: Bool
-    var numOfGroup: Int
-    var timeLimit: Int?
-    var clickLimit: Int?
+    let mode: OptionType
     var tint: Color = Color(UIColor.label)
     
     var body: some View {
+        if case .Mode(
+            let groupLenght,
+            let preview,
+            let numOfGroup,
+            let timeLimit,
+            let clickLimit
+        ) = mode{
+            
         VStack{
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 TextIconView(
-                    text: "\(groupLength)",
+                    text: "\(groupLenght)",
                     icon: "ic_group_length",
-                    tint: tint
+                    fontSize: 17.0,
+                    tint: tint,
+                    iconSize: 17.0
                 )
                 Spacer()
                 TextIconView(
                     text: nil,
-                    icon: "ic_preview",
+                    icon: preview ? "ic_preview" : "ic_no_preview",
                     tint: tint
                 )
                 Spacer()
                 TextIconView(
                     text: "\(numOfGroup)",
                     icon: "ic_num_of_group",
-                    tint: tint
+                    fontSize: 17.0,
+                    tint: tint,
+                    iconSize: 17.0
                 )
             }
             Spacer()
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 TextIconView(
                     text: {
                         if timeLimit == nil{
@@ -55,7 +60,9 @@ struct OptionModeView: View {
                         return "\(timeLimit ?? 0)"
                     }(),
                     icon: "ic_time_limit",
+                    fontSize: 17.0,
                     tint: tint,
+                    iconSize: 17.0,
                     visible: timeLimit != nil
                 )
                 Spacer()
@@ -67,12 +74,15 @@ struct OptionModeView: View {
                         return "\(clickLimit ?? 0)"
                     }(),
                     icon: "ic_click_limit",
+                    fontSize: 17.0,
                     tint: tint,
+                    iconSize: 17.0,
                     visible: clickLimit != nil
                 )
             }
         }
         .padding(.all, gameModePaddingViewPadding)
+        }
     }
 }
 
@@ -83,27 +93,27 @@ struct GameModeWidgetViewPreview: PreviewProvider {
             tint: Color(UIColor.label),
             onClick: {},
             onHold: {}
-        ){
-            OptionModeView(
+        ) {
+            OptionModeView(mode: .Mode(
                 groupLength: 3,
                 preview: false,
                 numOfGroup: 2,
                 timeLimit: nil,
                 clickLimit: 2
-            )
+            ))
         }
         .previewDisplayName("game mode menu option")
             .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)
             .previewLayout(.sizeThatFits)
 
-        OptionModeView(
+        OptionModeView(mode: .Mode(
             groupLength: 3,
-            preview: true,
+            preview: false,
             numOfGroup: 2,
-            timeLimit: 2,
-            clickLimit: nil
-        )
+            timeLimit: nil,
+            clickLimit: 2
+        ))
             .previewDisplayName("menu option game mode")
             .preferredColorScheme(.dark)
             .frame(width: 145.0, height: 145.0)

@@ -7,18 +7,21 @@
 
 import SwiftUI
 
+/**
+ Edit screen
+ */
 struct EditScreen: View {
     @ObservedObject private var viewModel: EditViewModel = EditViewModel()
     var body: some View {
-        VStack(alignment: .center){
-            Spacer().frame(height: landingScreenFirstSpacer)
+        VStack(alignment: .center) {
+            Spacer().frame(height: screenFirstSpacer)
             TitleView(
                 title: viewModel.title,
                 icon: viewModel.image,
                 tint: viewModel.tint
             )
             Spacer()
-        }
+        }.ignoresSafeArea()
     }
 }
 
