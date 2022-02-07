@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
         image: String = "ic_brain",
         tint: Color  = Color(UIColor.label),
         optionColor: Color  = Color(UIColor.label.withAlphaComponent(0.05))
-    ){
+    ) {
         self.title = title
         self.image = image
         self.tint = tint

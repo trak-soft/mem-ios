@@ -10,6 +10,8 @@ import SwiftUI
 /**
 Add Game component
  
+ - Parameter icon - icon resource
+ - Parameter tint - tint color
  */
 struct OptionImageView: View {
     var icon: String

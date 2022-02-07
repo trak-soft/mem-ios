@@ -16,5 +16,6 @@ let optionViewPadding = 15.0
 let screenFirstSpacer = 100.0
 let screenSecondSpacer = 20.0
 let screenPadding = 20.0
+let screenBottomPadding = 40.0
 let screenNavOffsetY = -90.0
 let landingScreenOptionViewPadding = 0.0

@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/**
+- Parameter title - title text
+- Parameter icon - icon resource
+- Parameter tint - tint color
+ */
 struct TitleView: View {
     let title: String
     let icon: String

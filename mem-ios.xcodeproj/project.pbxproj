@@ -19,7 +19,6 @@
 		BA49EBA62797DD3800C67D52 /* OptionModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* OptionModeView.swift */; };
 		BA8012AC2796873200A862E6 /* OptionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* OptionImageView.swift */; };
 		BA8012AE2796875300A862E6 /* OptionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* OptionContentView.swift */; };
-		BA89F4F4279AD4A700D760DD /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA89F4F3279AD4A700D760DD /* OptionsView.swift */; };
 		BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */; };
 		BA9D79FF279CCACA00D1CFF7 /* EditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FE279CCACA00D1CFF7 /* EditScreen.swift */; };
 		BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB9FD2C2796DB5F001DC263 /* Dimen.swift */; };
@@ -66,7 +65,6 @@
 		BA49EBA52797DD3800C67D52 /* OptionModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModeView.swift; sourceTree = "<group>"; };
 		BA8012AB2796873200A862E6 /* OptionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionImageView.swift; sourceTree = "<group>"; };
 		BA8012AD2796875300A862E6 /* OptionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionContentView.swift; sourceTree = "<group>"; };
-		BA89F4F3279AD4A700D760DD /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
 		BA9D79FE279CCACA00D1CFF7 /* EditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreen.swift; sourceTree = "<group>"; };
 		BAB9FD2C2796DB5F001DC263 /* Dimen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimen.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				BA49EBA52797DD3800C67D52 /* OptionModeView.swift */,
-				BA89F4F3279AD4A700D760DD /* OptionsView.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -408,7 +405,6 @@
 				BAD5913E27A39A260037CCBE /* EditViewModel.swift in Sources */,
 				BAD5913C27A399DB0037CCBE /* PlayViewModel.swift in Sources */,
 				BAD5913A27A398C80037CCBE /* OptionType.swift in Sources */,
-				BA89F4F4279AD4A700D760DD /* OptionsView.swift in Sources */,
 				BA9D79FF279CCACA00D1CFF7 /* EditScreen.swift in Sources */,
 				BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */,
 				BAE4128027A55ADF0066E620 /* HeaderView.swift in Sources */,

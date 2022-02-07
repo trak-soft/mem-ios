@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ Home screen
+ */
 struct HomeScreen: View {
     @ObservedObject private var viewModel: HomeViewModel = HomeViewModel(
         tint: Color(UIColor.label),
@@ -18,7 +21,7 @@ struct HomeScreen: View {
     
     var body: some View {
         NavigationView{
-            VStack(alignment: .center){
+            VStack(alignment: .center) {
                 Spacer().frame(height: screenFirstSpacer)
                 TitleView(
                     title: viewModel.title,
@@ -38,7 +41,7 @@ struct HomeScreen: View {
                         tint: viewModel.tint,
                         onClick: {
                             
-                            switch(option){
+                            switch(option) {
                             case .Mode(
                                 let groupLength,
                                 let preview,
@@ -64,7 +67,7 @@ struct HomeScreen: View {
                                 self.isLinkActive = true
                             }
                         }
-                    ){
+                    ) {
                         switch option {
                         case .Mode:
                             OptionModeView(
@@ -85,6 +88,7 @@ struct HomeScreen: View {
                         .hidden()
                     )
             }.padding(.horizontal, screenPadding)
+            .padding(.bottom, screenBottomPadding)
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
         }

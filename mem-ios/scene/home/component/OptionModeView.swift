@@ -10,11 +10,8 @@ import SwiftUI
 /**
  game mode view
  
- - Parameter groupLength - length of one group
- - Parameter numOfGroup - number of groups
- - Parameter preview - if board will be preview at the start
- - Parameter clickLimit - max number of click
- - Parameter timeLimit - time limit to solve
+ - Parameter mode - mode setting
+ - Parameter tint - tint color
  */
 struct OptionModeView: View {
     let mode: OptionType
@@ -30,7 +27,7 @@ struct OptionModeView: View {
         ) = mode{
             
         VStack{
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 TextIconView(
                     text: "\(groupLenght)",
                     icon: "ic_group_length",
@@ -54,7 +51,7 @@ struct OptionModeView: View {
                 )
             }
             Spacer()
-            HStack(alignment: .center){
+            HStack(alignment: .center) {
                 TextIconView(
                     text: {
                         if timeLimit == nil{
@@ -96,7 +93,7 @@ struct GameModeWidgetViewPreview: PreviewProvider {
             tint: Color(UIColor.label),
             onClick: {},
             onHold: {}
-        ){
+        ) {
             OptionModeView(mode: .Mode(
                 groupLength: 3,
                 preview: false,

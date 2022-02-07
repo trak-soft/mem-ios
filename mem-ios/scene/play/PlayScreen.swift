@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+/**
+ play screen
+ */
 struct PlayScreen: View {
     let mode: OptionType
     @ObservedObject private var viewModel: PlayViewModel
     
-    init(mode: OptionType){
+    init(mode: OptionType) {
         self.mode = mode
         self.viewModel = PlayViewModel(
             mode: mode,
@@ -20,7 +23,7 @@ struct PlayScreen: View {
     }
     var body: some View {
         GeometryReader{reader in
-            ZStack(alignment: .bottomTrailing){
+            ZStack(alignment: .bottomTrailing) {
                 if case .Mode(_,_,_,let timeLimit,_) = viewModel.mode {
                     if viewModel.timeLeft != nil && timeLimit != nil {
                         let height: CGFloat = reader.size.height * (CGFloat(viewModel.timeLeft ?? 1) / CGFloat(timeLimit ?? 1))
@@ -33,7 +36,7 @@ struct PlayScreen: View {
                 }
                 
                 
-                VStack(alignment: .center){
+                VStack(alignment: .center) {
                     Spacer().frame(height: screenFirstSpacer)
                     HeaderView(
                         clickLimit: viewModel.clicksLeft,
@@ -44,25 +47,25 @@ struct PlayScreen: View {
                     Spacer().frame(height: screenSecondSpacer)
                     
                     GridView(size: viewModel.icons.count
-                    ){ index in
+                    ) { index in
                         OptionContentView(
                             backgroundColor: viewModel.tint.opacity(0.05),
                             tint: viewModel.tint,
                             onClick: {
                             },
                             onHold: {}
-                        ){
+                        ) {
                             OptionImageView(
                                 icon: viewModel.getIconAt(index: index),
                                 tint: Color(UIColor.label)
                             )
                         }
                     }
-                    .padding(.bottom, 40.0)
                     
                 }.padding(.horizontal, screenPadding)
-            }
-        }.ignoresSafeArea()
+                .padding(.bottom, screenBottomPadding)
+            }.ignoresSafeArea()
+        }
     }
 }
 

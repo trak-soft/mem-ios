@@ -18,7 +18,7 @@ class PlayViewModel: ObservableObject {
     init(
         mode: OptionType,
         tint: Color = Color(UIColor.label)
-    ){
+    ) {
         self.mode = mode
         self.tint = tint
         

@@ -9,8 +9,15 @@ import SwiftUI
 import UIKit
 
 /**
- - Parameter number - number of info
- - Parameter image - info image
+ - Parameter text - text to be displayed, if text is null show no text
+ - Parameter icon - image to be displayed, if icon is null show no icon
+ - Parameter fontSize - fontSize
+ - Parameter fontWeight - font weight
+ - Parameter letterSpacing - spacing between letter
+ - Parameter tint - color of icon and image
+ - Parameter iconSize - width and height of image, if image size is nulll image size is default image size
+ - Parameter space - space between text and image
+ - Parameter visible - is view visible
  */
 struct TextIconView: View {
     var text: String?
@@ -35,7 +42,7 @@ struct TextIconView: View {
                         .tracking(letterSpacing ?? 0.15)
                 }
                 Spacer().frame(width: space)
-                if (icon != nil){
+                if (icon != nil) {
                     let uiImageView = UIImageView(image: UIImage(named: icon ?? ""))
                     
                     Image(icon ?? "")
