@@ -55,17 +55,16 @@ struct PlayScreen: View {
                             },
                             onHold: {}
                         ) {
-                            OptionImageView(
-                                icon: viewModel.getIconAt(index: index),
-                                tint: Color(UIColor.label)
-                            )
+                           Text(
+                                String(viewModel.getIconAt(index: index))
+                           ).frame(alignment: .center)
                         }
                     }
                     
                 }.padding(.horizontal, screenPadding)
                 .padding(.bottom, screenBottomPadding)
             }.ignoresSafeArea()
-        }
+        }.ignoresSafeArea()
     }
 }
 

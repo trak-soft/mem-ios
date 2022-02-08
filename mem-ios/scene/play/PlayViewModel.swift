@@ -11,7 +11,7 @@ import SwiftUI
 class PlayViewModel: ObservableObject {
     let mode: OptionType
     let tint: Color
-    @Published var icons: [String] = []
+    @Published var icons: [Int] = []
     @Published var timeLeft: Int? = nil
     @Published var clicksLeft: Int? = nil
     
@@ -31,11 +31,11 @@ class PlayViewModel: ObservableObject {
         ) = mode {
             self.timeLeft = time
             self.clicksLeft = click
-            self.icons = Array(repeating: "ic_brain", count: groupLength * numOfGroup)
+            self.icons = Array(repeating: -1 , count: groupLength * numOfGroup)
         }
     }
     
-    func getIconAt(index: Int) -> String{
+    func getIconAt(index: Int) -> Int {
         return icons[index]
     }
 }
