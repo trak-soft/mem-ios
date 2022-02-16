@@ -37,6 +37,7 @@ class HomeViewModel: ObservableObject {
         OptionType.Mode(groupLength: 4,  preview: false, numOfGroup: 8, timeLimit: 2, clickLimit: 2),
         OptionType.Mode(groupLength: 3,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
         OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 7, timeLimit: 2, clickLimit: 2),
+        OptionType.Mode(groupLength: 2,  preview: false, numOfGroup: 3, timeLimit: 2, clickLimit: 2),
     ]
 
 }
