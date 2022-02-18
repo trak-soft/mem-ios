@@ -46,18 +46,17 @@ struct PlayScreen: View {
                     )
                     Spacer().frame(height: screenSecondSpacer)
                     
-                    GridView(size: viewModel.icons.count
+                    GridView(size: viewModel.cards.count
                     ) { index in
                         OptionContentView(
                             backgroundColor: viewModel.tint.opacity(0.05),
                             tint: viewModel.tint,
                             onClick: {
+                                viewModel.onEvent(event:.CardClick(index: index))
                             },
                             onHold: {}
                         ) {
-                           Text(
-                                String(viewModel.getIconAt(index: index))
-                           ).frame(alignment: .center)
+                            Text(getIcon(index)).frame(alignment: .center)
                         }
                     }
                     
@@ -66,9 +65,17 @@ struct PlayScreen: View {
             }.ignoresSafeArea()
         }.ignoresSafeArea()
     }
+    
+    private func getIcon(_ index: Int) -> String {
+        switch viewModel.cards[index].state {
+        case .FACE_UP: return String(viewModel.cards[index].icon)
+        case .FACE_DOWN: return "-1"
+        case .SOLVED: return String(viewModel.cards[index].icon)
+        }
+    }
 }
 
-struct PlayScreen_Previews: PreviewProvider {
+struct PlayScreenPreviews: PreviewProvider {
     static var previews: some View {
         PlayScreen(mode: .Mode(
             groupLength: 3,
