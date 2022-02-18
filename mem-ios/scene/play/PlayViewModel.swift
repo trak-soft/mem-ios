@@ -46,7 +46,15 @@ class PlayViewModel: ObservableObject {
             if groupSolved < numOfGroup {
                 switch cards[index].state {
                 case .FACE_UP: break
-                case .FACE_DOWN : addToActive(index: index)
+                case .FACE_DOWN :
+                    if let clicksLeft = clicksLeft {
+                        if clicksLeft > 0 {
+                            addToActive(index: index)
+                        }
+                    } else {
+                        addToActive(index: index)
+                    }
+                    
                 case .SOLVED: break
                 }
             }
@@ -54,6 +62,11 @@ class PlayViewModel: ObservableObject {
     }
     
     private func addToActive(index: Int) {
+        if let clicksLeft = clicksLeft {
+            if clicksLeft > 0 {
+                self.clicksLeft = clicksLeft - 1
+            }
+        }
         if case .Mode(let groupLength, _, _, _, _) = mode {
             if actives.count > 1 && cards[actives[actives.count - 2]].icon != cards[actives[actives.count - 1]].icon {
                 for active in actives {

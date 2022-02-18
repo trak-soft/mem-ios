@@ -88,7 +88,6 @@ struct HomeScreen: View {
                         .hidden()
                     )
             }.padding(.horizontal, screenPadding)
-            .padding(.bottom, screenBottomPadding)
                 .navigationBarHidden(true)
                 .ignoresSafeArea()
         }
