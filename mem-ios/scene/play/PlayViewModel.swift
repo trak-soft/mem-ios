@@ -9,12 +9,16 @@ import Foundation
 import SwiftUI
 
 class PlayViewModel: ObservableObject {
+    static let MILLISECOND: Int = 1000
+    static let TIME_INTERVAL: Int = 10
     let mode: OptionType
     let tint: Color
     @Published var cards: [Card] = []
     @Published var groupSolved: Int = 0
     @Published var timeLeft: Int? = nil
     @Published var clicksLeft: Int? = nil
+
+    let timer = Timer.publish(every: TimeInterval(Float(TIME_INTERVAL) / Float(MILLISECOND)), on: .main, in: .common).autoconnect()
     private var actives: [Int] = []
     
     init(
@@ -25,7 +29,7 @@ class PlayViewModel: ObservableObject {
         self.tint = tint
         groupSolved = 0
         if case .Mode(let groupLength, _, let numOfGroup, let time, let click) = mode {
-            self.timeLeft = time
+            self.timeLeft = {if let time = time{ return time * PlayViewModel.MILLISECOND}; return time }()
             self.clicksLeft = click
             for _ in 0..<groupLength {
                 for j in 0..<numOfGroup {
@@ -42,20 +46,36 @@ class PlayViewModel: ObservableObject {
     }
     
     private func onCardClick(index: Int) {
-        if case .Mode(_, _, let numOfGroup, _, _) = mode {
+        if case .Mode(_, _, let numOfGroup, let clickLimit, let timeLimit) = mode {
             if groupSolved < numOfGroup {
                 switch cards[index].state {
                 case .FACE_UP: break
                 case .FACE_DOWN :
-                    if let clicksLeft = clicksLeft {
-                        if clicksLeft > 0 {
-                            addToActive(index: index)
+                    if timeLimit != nil && clickLimit != nil {
+                        if let clicksLeft = clicksLeft, let timeLeft = timeLeft{
+                            if clicksLeft > 0 && timeLeft > 0{
+                                addToActive(index: index)
+                            }
+                        }
+                    } else if timeLimit != nil {
+                        if let timeLeft = timeLeft {
+                            if timeLeft > 0 {
+                                addToActive(index: index)
+                            }
+                        }
+                    } else if clickLimit != nil {
+                        if let clicksLeft = clicksLeft {
+                            if clicksLeft > 0 {
+                                addToActive(index: index)
+                            }
                         }
                     } else {
                         addToActive(index: index)
                     }
-                    
                 case .SOLVED: break
+                }
+                if groupSolved == numOfGroup {
+                    timer.upstream.connect().cancel()
                 }
             }
         }
@@ -73,15 +93,20 @@ class PlayViewModel: ObservableObject {
                     cards[active].state = .FACE_DOWN
                 }
                 actives.removeAll()
-            } else if actives.count == groupLength {
-                for active in actives {
-                    cards[active].state = .SOLVED
-                }
-                actives.removeAll()
             }
+            
             actives.append(index)
             cards[index].state = .FACE_UP
             
+            if !(actives.count > 1 &&
+                cards[actives[actives.count - 2]].icon != cards[actives[actives.count - 1]].icon) &&
+                actives.count == groupLength {
+                for active in actives {
+                    cards[active].state = .SOLVED
+                }
+                groupSolved = groupSolved + 1
+                actives.removeAll()
+            }
         }
     }
 }
