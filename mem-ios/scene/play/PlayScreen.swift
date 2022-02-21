@@ -22,48 +22,60 @@ struct PlayScreen: View {
         )
     }
     var body: some View {
-        GeometryReader{reader in
-            ZStack(alignment: .bottomTrailing) {
-                if case .Mode(_,_,_,let timeLimit,_) = viewModel.mode {
-                    if viewModel.timeLeft != nil && timeLimit != nil {
-                        let height: CGFloat = reader.size.height * (CGFloat(viewModel.timeLeft ?? 1) / CGFloat(timeLimit ?? 1))
-                    
-                        Rectangle()
-                            .fill(viewModel.tint.opacity(0.05))
-                            .frame(width: reader.size.width, height: height)
+        if case .Mode(_,_,_,let timeLimit,_) = viewModel.mode {
+            GeometryReader{reader in
+                ZStack(alignment: .bottomTrailing) {
+                        if let timeLeft = viewModel.timeLeft, let timeLimit = timeLimit {
+                            let height: CGFloat = reader.size.height * (CGFloat(timeLeft) / CGFloat(timeLimit * PlayViewModel.MILLISECOND))
                         
-                    }
-                }
-                
-                
-                VStack(alignment: .center) {
-                    Spacer().frame(height: screenFirstSpacer)
-                    HeaderView(
-                        clickLimit: viewModel.clicksLeft,
-                        timeLimit: viewModel.timeLeft,
-                        onReset: {},
-                        tint: viewModel.tint
-                    )
-                    Spacer().frame(height: screenSecondSpacer)
+                            Rectangle()
+                                .fill(viewModel.tint.opacity(0.05))
+                                .frame(width: reader.size.width, height: height)
+                            
+                        }
                     
-                    GridView(size: viewModel.cards.count
-                    ) { index in
-                        OptionContentView(
-                            backgroundColor: viewModel.tint.opacity(0.05),
-                            tint: viewModel.tint,
-                            onClick: {
-                                viewModel.onEvent(event:.CardClick(index: index))
-                            },
-                            onHold: {}
-                        ) {
-                            Text(getIcon(index)).frame(alignment: .center)
+                    VStack(alignment: .center) {
+                        Spacer().frame(height: screenFirstSpacer)
+                        HeaderView(
+                            clickLimit: viewModel.clicksLeft,
+                            timeLimit: {
+                                if let timeleft = viewModel.timeLeft{
+                                    return Int(ceilf(Float(timeleft) / Float(PlayViewModel.MILLISECOND)))
+                                }
+                                return viewModel.timeLeft
+                            }(),
+                            onReset: {},
+                            tint: viewModel.tint
+                        )
+                        
+                        Spacer().frame(height: screenSecondSpacer)
+                        
+                        GridView(size: viewModel.cards.count
+                        ) { index in
+                            OptionContentView(
+                                backgroundColor: viewModel.tint.opacity(0.05),
+                                tint: viewModel.tint,
+                                onClick: {
+                                    viewModel.onEvent(event:.CardClick(index: index))
+                                },
+                                onHold: {}
+                            ) {
+                                Text(getIcon(index)).frame(alignment: .center)
+                            }
+                        }
+                        
+                    }.padding(.horizontal, screenPadding)
+                    .padding(.bottom, screenBottomPadding)
+                }.ignoresSafeArea()
+                    .onReceive(viewModel.timer) { time in
+                        if let timeLeft = viewModel.timeLeft {
+                            if timeLeft > 0 {
+                                viewModel.timeLeft = timeLeft - PlayViewModel.TIME_INTERVAL
+                            }
                         }
                     }
-                    
-                }.padding(.horizontal, screenPadding)
-                .padding(.bottom, screenBottomPadding)
             }.ignoresSafeArea()
-        }.ignoresSafeArea()
+        }
     }
     
     private func getIcon(_ index: Int) -> String {
@@ -81,8 +93,8 @@ struct PlayScreenPreviews: PreviewProvider {
             groupLength: 3,
             preview: false,
             numOfGroup: 2,
-            timeLimit: 2,
-            clickLimit: 2
+            timeLimit: 20,
+            clickLimit: 20
             )
         )
             .preferredColorScheme(.dark)
