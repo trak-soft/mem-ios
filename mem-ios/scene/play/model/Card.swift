@@ -7,13 +7,13 @@
 
 import Foundation
 
+/**
+ Card model class
+ 
+ - Parameter icon - card icon
+ - Parameter state - card state
+ */
 struct Card {
     let icon: Int
     var state: CardState = .FACE_DOWN
-}
-
-enum CardState{
-    case FACE_UP
-    case FACE_DOWN
-    case SOLVED
 }

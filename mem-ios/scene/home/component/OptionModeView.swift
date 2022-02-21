@@ -18,7 +18,7 @@ struct OptionModeView: View {
     var tint: Color = Color(UIColor.label)
     
     var body: some View {
-        if case .Mode(
+        if case .MODE(
             let groupLenght,
             let preview,
             let numOfGroup,
@@ -94,7 +94,7 @@ struct GameModeWidgetViewPreview: PreviewProvider {
             onClick: {},
             onHold: {}
         ) {
-            OptionModeView(mode: .Mode(
+            OptionModeView(mode: .MODE(
                 groupLength: 3,
                 preview: false,
                 numOfGroup: 2,
@@ -107,7 +107,7 @@ struct GameModeWidgetViewPreview: PreviewProvider {
             .frame(width: 145.0, height: 145.0)
             .previewLayout(.sizeThatFits)
 
-        OptionModeView(mode: .Mode(
+        OptionModeView(mode: .MODE(
             groupLength: 3,
             preview: false,
             numOfGroup: 2,

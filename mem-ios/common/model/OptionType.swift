@@ -11,11 +11,10 @@ import Foundation
  oprion type
  */
 enum OptionType: Hashable {
-    case Mode(groupLength: Int,
+    case MODE(groupLength: Int,
               preview: Bool,
               numOfGroup: Int,
               timeLimit: Int?,
-              clickLimit: Int?
-    )
-    case Add
+              clickLimit: Int?)
+    case ADD
 }
