@@ -7,6 +7,13 @@
 
 import Foundation
 
+/**
+ Play Screen Event
+ 
+ CardClick - card click event
+ Reset - game state reset event
+ */
 enum PlayScreenEvent {
     case CardClick(index: Int)
+    case Reset
 }

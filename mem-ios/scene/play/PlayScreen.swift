@@ -13,29 +13,28 @@ import SwiftUI
 struct PlayScreen: View {
     let mode: OptionType
     @ObservedObject private var viewModel: PlayViewModel
+    let tint: Color =  Color(UIColor.label)
     
     init(mode: OptionType) {
         self.mode = mode
-        self.viewModel = PlayViewModel(
-            mode: mode,
-            tint: Color(UIColor.label)
-        )
+        self.viewModel = PlayViewModel(mode: mode)
     }
     var body: some View {
-        if case .Mode(_,_,_,let timeLimit,_) = viewModel.mode {
+        if case .MODE(_,_,_,let timeLimit,_) = viewModel.mode {
             GeometryReader{reader in
                 ZStack(alignment: .bottomTrailing) {
                         if let timeLeft = viewModel.timeLeft, let timeLimit = timeLimit {
                             let height: CGFloat = reader.size.height * (CGFloat(timeLeft) / CGFloat(timeLimit * PlayViewModel.MILLISECOND))
                         
                             Rectangle()
-                                .fill(viewModel.tint.opacity(0.05))
+                                .fill(tint.opacity(0.05))
                                 .frame(width: reader.size.width, height: height)
                             
                         }
                     
                     VStack(alignment: .center) {
                         Spacer().frame(height: screenFirstSpacer)
+                        //Header
                         HeaderView(
                             clickLimit: viewModel.clicksLeft,
                             timeLimit: {
@@ -44,8 +43,10 @@ struct PlayScreen: View {
                                 }
                                 return viewModel.timeLeft
                             }(),
-                            onReset: {},
-                            tint: viewModel.tint
+                            onReset: {
+                                viewModel.onEvent(event: .Reset)
+                            },
+                            tint: tint
                         )
                         
                         Spacer().frame(height: screenSecondSpacer)
@@ -53,8 +54,8 @@ struct PlayScreen: View {
                         GridView(size: viewModel.cards.count
                         ) { index in
                             OptionContentView(
-                                backgroundColor: viewModel.tint.opacity(0.05),
-                                tint: viewModel.tint,
+                                backgroundColor: tint.opacity(0.05),
+                                tint: tint,
                                 onClick: {
                                     viewModel.onEvent(event:.CardClick(index: index))
                                 },
@@ -68,13 +69,11 @@ struct PlayScreen: View {
                     .padding(.bottom, screenBottomPadding)
                 }.ignoresSafeArea()
                     .onReceive(viewModel.timer) { time in
-                        if let timeLeft = viewModel.timeLeft {
-                            if timeLeft > 0 {
-                                viewModel.timeLeft = timeLeft - PlayViewModel.TIME_INTERVAL
-                            }
-                        }
+                        viewModel.timerOnEachInterval()
                     }
+                    .navigationBarTitleDisplayMode(.inline)
             }.ignoresSafeArea()
+            
         }
     }
     
@@ -89,7 +88,7 @@ struct PlayScreen: View {
 
 struct PlayScreenPreviews: PreviewProvider {
     static var previews: some View {
-        PlayScreen(mode: .Mode(
+        PlayScreen(mode: .MODE(
             groupLength: 3,
             preview: false,
             numOfGroup: 2,

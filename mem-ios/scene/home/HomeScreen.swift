@@ -11,13 +11,13 @@ import SwiftUI
  Home screen
  */
 struct HomeScreen: View {
-    @ObservedObject private var viewModel: HomeViewModel = HomeViewModel(
-        tint: Color(UIColor.label),
-        optionColor: Color(UIColor.label.withAlphaComponent(0.05))
-    )
+    @ObservedObject private var viewModel: HomeViewModel = HomeViewModel()
     
     @State private var isLinkActive = false
     @State private var destintion = AnyView(EditScreen())
+    
+    let tint: Color  = Color(UIColor.label)
+    let optionColor: Color  = Color(UIColor.label.withAlphaComponent(0.05))
     
     var body: some View {
         NavigationView{
@@ -26,7 +26,7 @@ struct HomeScreen: View {
                 TitleView(
                     title: viewModel.title,
                     icon: viewModel.image,
-                    tint: viewModel.tint
+                    tint: tint
                 )
                 Spacer().frame(height: screenSecondSpacer)
                 GridView(
@@ -37,47 +37,47 @@ struct HomeScreen: View {
                 ) { index in
                     let option = viewModel.options[index]
                     OptionContentView(
-                        backgroundColor: viewModel.optionColor,
-                        tint: viewModel.tint,
+                        backgroundColor: optionColor,
+                        tint: tint,
                         onClick: {
                             
                             switch(option) {
-                            case .Mode(
+                            case .MODE(
                                 let groupLength,
                                 let preview,
                                 let numOfGroup,
                                 let timeLimit,
                                 let clickLimit
                             ):
-                                destintion = AnyView(PlayScreen(mode: .Mode(
+                                destintion = AnyView(PlayScreen(mode: .MODE(
                                     groupLength: groupLength,
                                     preview: preview,
                                     numOfGroup: numOfGroup,
                                     timeLimit: timeLimit,
                                     clickLimit: clickLimit
                                 )))
-                            case .Add:
+                            case .ADD:
                                 destintion = AnyView(EditScreen())
                             }
                             self.isLinkActive = true
                         },
                         onHold: {
-                            if case .Mode = option {
+                            if case .MODE = option {
                                 destintion = AnyView(EditScreen())
                                 self.isLinkActive = true
                             }
                         }
                     ) {
                         switch option {
-                        case .Mode:
+                        case .MODE:
                             OptionModeView(
                                 mode: option,
-                                tint: viewModel.tint
+                                tint: tint
                             )
-                        case .Add:
+                        case .ADD:
                             OptionImageView(
                                 icon: "ic_add_game",
-                                tint: viewModel.tint
+                                tint: tint
                             )
                         }
                     }
