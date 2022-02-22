@@ -20,77 +20,75 @@ struct HomeScreen: View {
     let optionColor: Color  = Color(UIColor.label.withAlphaComponent(0.05))
     
     var body: some View {
-        NavigationView{
-            VStack(alignment: .center) {
-                Spacer().frame(height: screenFirstSpacer)
-                TitleView(
-                    title: viewModel.title,
-                    icon: viewModel.image,
-                    tint: tint
-                )
-                Spacer().frame(height: screenSecondSpacer)
-                GridView(
-                    size: viewModel.options.count,
-                    padding: 10.0,
-                    inf: true,
-                    rowCount: 2
-                ) { index in
-                    let option = viewModel.options[index]
-                    OptionContentView(
-                        backgroundColor: optionColor,
-                        tint: tint,
-                        onClick: {
-                            
-                            switch(option) {
-                            case .MODE(
-                                let groupLength,
-                                let preview,
-                                let numOfGroup,
-                                let timeLimit,
-                                let clickLimit
-                            ):
-                                destintion = AnyView(PlayScreen(mode: .MODE(
-                                    groupLength: groupLength,
-                                    preview: preview,
-                                    numOfGroup: numOfGroup,
-                                    timeLimit: timeLimit,
-                                    clickLimit: clickLimit
-                                )))
-                            case .ADD:
-                                destintion = AnyView(EditScreen())
-                            }
-                            self.isLinkActive = true
-                        },
-                        onHold: {
-                            if case .MODE = option {
-                                destintion = AnyView(EditScreen())
-                                self.isLinkActive = true
-                            }
-                        }
-                    ) {
-                        switch option {
-                        case .MODE:
-                            OptionModeView(
-                                mode: option,
-                                tint: tint
-                            )
+        VStack(alignment: .center) {
+            Spacer().frame(height: screenFirstSpacer)
+            TitleView(
+                title: viewModel.title,
+                icon: viewModel.image,
+                tint: tint
+            )
+            Spacer().frame(height: screenSecondSpacer)
+            GridView(
+                size: viewModel.options.count,
+                padding: 10.0,
+                inf: true,
+                rowCount: 2
+            ) { index in
+                let option = viewModel.options[index]
+                OptionContentView(
+                    backgroundColor: optionColor,
+                    tint: tint,
+                    onClick: {
+                        
+                        switch(option) {
+                        case .MODE(
+                            let groupLength,
+                            let preview,
+                            let numOfGroup,
+                            let timeLimit,
+                            let clickLimit
+                        ):
+                            destintion = AnyView(PlayScreen(mode: .MODE(
+                                groupLength: groupLength,
+                                preview: preview,
+                                numOfGroup: numOfGroup,
+                                timeLimit: timeLimit,
+                                clickLimit: clickLimit
+                            )))
                         case .ADD:
-                            OptionImageView(
-                                icon: "ic_add_game",
-                                tint: tint
-                            )
+                            destintion = AnyView(EditScreen())
+                        }
+                        self.isLinkActive = true
+                    },
+                    onHold: {
+                        if case .MODE = option {
+                            destintion = AnyView(EditScreen())
+                            self.isLinkActive = true
                         }
                     }
-                }.background(
-                        NavigationLink(destination: destintion, isActive: $isLinkActive) {
-                            EmptyView()
-                        }
-                        .hidden()
-                    )
-            }.padding(.horizontal, screenPadding)
-                .navigationBarHidden(true)
-                .ignoresSafeArea()
-        }
+                ) {
+                    switch option {
+                    case .MODE:
+                        OptionModeView(
+                            mode: option,
+                            tint: tint
+                        )
+                    case .ADD:
+                        OptionImageView(
+                            icon: "ic_add_game",
+                            tint: tint
+                        )
+                    }
+                }
+            }.background(
+                    NavigationLink(destination: destintion, isActive: $isLinkActive) {
+                        EmptyView()
+                    }
+                    .hidden()
+                )
+        }.padding(.horizontal, screenPadding)
+            .navigationBarHidden(true)
+            .ignoresSafeArea()
     }
 }
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */; };
-		BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC0527905AA20047BE8C /* ContentView.swift */; };
 		BA0ACC0827905AA50047BE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0ACC0727905AA50047BE8C /* Assets.xcassets */; };
 		BA0ACC0B27905AA50047BE8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0ACC0A27905AA50047BE8C /* Preview Assets.xcassets */; };
 		BA0ACC1527905AA60047BE8C /* mem_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC1427905AA60047BE8C /* mem_iosTests.swift */; };
@@ -17,6 +16,8 @@
 		BA3A6BF5279C51F60062D216 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF4279C51F60062D216 /* HomeScreen.swift */; };
 		BA3A6BF7279C83F20062D216 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */; };
 		BA49EBA62797DD3800C67D52 /* OptionModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* OptionModeView.swift */; };
+		BA560C4C27C4620000CA6249 /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA560C4B27C4620000CA6249 /* CardState.swift */; };
+		BA560C4E27C4621000CA6249 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA560C4D27C4621000CA6249 /* GameState.swift */; };
 		BA8012AC2796873200A862E6 /* OptionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AB2796873200A862E6 /* OptionImageView.swift */; };
 		BA8012AE2796875300A862E6 /* OptionContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8012AD2796875300A862E6 /* OptionContentView.swift */; };
 		BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */; };
@@ -54,7 +55,6 @@
 /* Begin PBXFileReference section */
 		BA0ACC0027905AA20047BE8C /* mem-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mem-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosApp.swift; sourceTree = "<group>"; };
-		BA0ACC0527905AA20047BE8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA0ACC0727905AA50047BE8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA0ACC0A27905AA50047BE8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA0ACC1027905AA60047BE8C /* mem-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mem-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +65,8 @@
 		BA3A6BF4279C51F60062D216 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BA49EBA52797DD3800C67D52 /* OptionModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModeView.swift; sourceTree = "<group>"; };
+		BA560C4B27C4620000CA6249 /* CardState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
+		BA560C4D27C4621000CA6249 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		BA8012AB2796873200A862E6 /* OptionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionImageView.swift; sourceTree = "<group>"; };
 		BA8012AD2796875300A862E6 /* OptionContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionContentView.swift; sourceTree = "<group>"; };
 		BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
@@ -135,7 +137,6 @@
 				BAFB062F279B524D0089CAEB /* common */,
 				BAB9FD2A2796D964001DC263 /* ui */,
 				BA0ACC0327905AA20047BE8C /* mem_iosApp.swift */,
-				BA0ACC0527905AA20047BE8C /* ContentView.swift */,
 				BA0ACC0927905AA50047BE8C /* Preview Content */,
 			);
 			path = "mem-ios";
@@ -219,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				BAB361DC27BCB9890096902D /* Card.swift */,
+				BA560C4B27C4620000CA6249 /* CardState.swift */,
+				BA560C4D27C4621000CA6249 /* GameState.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -416,7 +419,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA560C4E27C4621000CA6249 /* GameState.swift in Sources */,
 				BAD5913E27A39A260037CCBE /* EditViewModel.swift in Sources */,
+				BA560C4C27C4620000CA6249 /* CardState.swift in Sources */,
 				BAB361DD27BCB9890096902D /* Card.swift in Sources */,
 				BAD5913C27A399DB0037CCBE /* PlayViewModel.swift in Sources */,
 				BAD5913A27A398C80037CCBE /* OptionType.swift in Sources */,
@@ -424,7 +429,6 @@
 				BA9D79FD279CCA9B00D1CFF7 /* PlayScreen.swift in Sources */,
 				BAE4128027A55ADF0066E620 /* HeaderView.swift in Sources */,
 				BAD5914027A39C3F0037CCBE /* TextIconView.swift in Sources */,
-				BA0ACC0627905AA20047BE8C /* ContentView.swift in Sources */,
 				BA8012AE2796875300A862E6 /* OptionContentView.swift in Sources */,
 				BA0ACC0427905AA20047BE8C /* mem_iosApp.swift in Sources */,
 				BAB361DF27BCCADC0096902D /* PlayScreenEvent.swift in Sources */,

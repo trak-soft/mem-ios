@@ -71,6 +71,9 @@ struct PlayScreen: View {
                     .onReceive(viewModel.timer) { time in
                         viewModel.timerOnEachInterval()
                     }
+                    .onReceive(viewModel.previewTimer, perform: { time in
+                        viewModel.previewTimerOnEachInterval()
+                    })
                     .navigationBarTitleDisplayMode(.inline)
             }.ignoresSafeArea()
             
