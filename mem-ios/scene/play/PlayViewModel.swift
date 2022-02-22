@@ -22,15 +22,21 @@ import SwiftUI
 class PlayViewModel: ObservableObject {
     static let MILLISECOND: Int = 1000
     static let TIME_INTERVAL: Int = 10
+    static let PREVIEW_TIME: Int = 3 * MILLISECOND
     let mode: OptionType
 
     @Published var cards: [Card] = []
     @Published var groupSolved: Int = 0
     @Published var timeLeft: Int? = nil
+    var previewTimeLeft: Int? = nil
     @Published var clicksLeft: Int? = nil
     @Published var state: GameState = .INIT
 
     var timer = Timer.publish(every: TimeInterval(Float(TIME_INTERVAL) / Float(MILLISECOND)),
+                              on: .main,
+                              in: .common).autoconnect()
+    
+    var previewTimer = Timer.publish(every: TimeInterval(Float(TIME_INTERVAL) / Float(MILLISECOND)),
                               on: .main,
                               in: .common).autoconnect()
     
@@ -40,16 +46,7 @@ class PlayViewModel: ObservableObject {
         mode: OptionType
     ) {
         self.mode = mode
-        groupSolved = 0
-        if case .MODE(let groupLength, _, let numOfGroup, let time, let click) = mode {
-            self.timeLeft = {if let time = time{ return time * PlayViewModel.MILLISECOND}; return time }()
-            self.clicksLeft = click
-            for _ in 0..<groupLength {
-                for j in 0..<numOfGroup {
-                    cards.append(Card(icon: j))
-                }
-            }
-        }
+        toInitState(first: true)
     }
     
     // MARK: events
@@ -70,7 +67,13 @@ class PlayViewModel: ObservableObject {
      */
     private func onResetEvent() {
         toInitState()
-        toPlayState()
+        if case .MODE(_, let preview, _, _, _) = mode {
+            if preview {
+                toPreviewState()
+            } else {
+                toPlayState()
+            }
+        }
     }
     
     /**
@@ -116,14 +119,24 @@ class PlayViewModel: ObservableObject {
     // MARK: change state
     
     // changes state to init
-    private func toInitState() {
-        if case .MODE(_, _, _, let time, let click) = mode {
+    private func toInitState(first: Bool = false) {
+        if case .MODE(let groupLength, _,let numOfGroup, let time, let click) = mode {
             timer.upstream.connect().cancel()
+            previewTimer.upstream.connect().cancel()
             self.clicksLeft = click
+            self.previewTimeLeft = PlayViewModel.PREVIEW_TIME
             self.timeLeft = { if let time = time{ return time * PlayViewModel.MILLISECOND}; return time }()
             self.groupSolved = 0
-            for index in 0..<cards.count {
-                cards[index].state = .FACE_DOWN
+            if first {
+                for _ in 0..<groupLength {
+                    for j in 0..<numOfGroup {
+                        cards.append(Card(icon: j))
+                    }
+                }
+            } else {
+                for index in 0..<cards.count {
+                    cards[index].state = .FACE_DOWN
+                }
             }
             state = .INIT
         }
@@ -134,6 +147,12 @@ class PlayViewModel: ObservableObject {
     private func toPreviewState() {
         if case .INIT = state {
             state = .PREVIEW
+            for index in 0..<cards.count {
+                cards[index].state = .FACE_UP
+            }
+            previewTimer = Timer.publish(every: TimeInterval(Float(PlayViewModel.TIME_INTERVAL) / Float(PlayViewModel.MILLISECOND)),
+                                         on: .main,
+                                         in: .common).autoconnect()
         }
     }
     
@@ -145,6 +164,9 @@ class PlayViewModel: ObservableObject {
             playBlock()
         }
         func playBlock() {
+            for index in 0..<cards.count {
+                cards[index].state = .FACE_DOWN
+            }
             state = .PLAY
             timer = Timer.publish(every: TimeInterval(Float(PlayViewModel.TIME_INTERVAL) / Float(PlayViewModel.MILLISECOND)), on: .main, in: .common).autoconnect()
         }
@@ -170,6 +192,20 @@ class PlayViewModel: ObservableObject {
                 } else {
                     self.timeLeft = 0
                     toOverState()
+                }
+            }
+        }
+    }
+    
+    func previewTimerOnEachInterval() {
+        if case .PREVIEW = state {
+            if let previewTimeLeft = previewTimeLeft {
+                if previewTimeLeft > 0 {
+                    self.previewTimeLeft = previewTimeLeft - PlayViewModel.TIME_INTERVAL
+                } else {
+                    self.previewTimeLeft = 0
+                    previewTimer.upstream.connect().cancel()
+                    toPlayState()
                 }
             }
         }

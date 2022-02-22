@@ -55,7 +55,7 @@ struct GridView<Content: View>: View {
             column = Int(ceilf(Float(size) / Float(row)))
         }
         
-        return ScrollView{
+        return ScrollView(showsIndicators: false){
             LazyVGrid(
                 columns: Array(repeating: .init(.flexible()), count: row),
                 alignment: .center,
