@@ -18,4 +18,5 @@ enum CardState {
     case FACE_UP
     case FACE_DOWN
     case SOLVED
+    case WRONG
 }

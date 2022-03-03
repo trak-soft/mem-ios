@@ -108,6 +108,7 @@ class PlayViewModel: ObservableObject {
                         addToActive(index: index)
                     }
                 case .SOLVED: break
+                case .WRONG: break
                 }
                 if groupSolved == numOfGroup || clicksLeft == 0 || timeLeft == 0 {
                     toOverState()
@@ -123,6 +124,7 @@ class PlayViewModel: ObservableObject {
         if case .MODE(let groupLength, _,let numOfGroup, let time, let click) = mode {
             timer.upstream.connect().cancel()
             previewTimer.upstream.connect().cancel()
+            actives.removeAll()
             self.clicksLeft = click
             self.previewTimeLeft = PlayViewModel.PREVIEW_TIME
             self.timeLeft = { if let time = time{ return time * PlayViewModel.MILLISECOND}; return time }()
@@ -179,6 +181,11 @@ class PlayViewModel: ObservableObject {
                 state = .OVER(won: groupSolved == numOfGroup)
             }
             timer.upstream.connect().cancel()
+            for index in 0..<cards.count {
+                if cards[index].state != .SOLVED {
+                    cards[index].state = .WRONG
+                }
+            }
         }
     }
     
@@ -239,9 +246,12 @@ class PlayViewModel: ObservableObject {
             
             // check if the last 2 active cards are different and active size is equal to group length
             // if so remove all active cards and increase the number to group solved by 1
-            if !(actives.count > 1 &&
-                cards[actives[actives.count - 2]].icon != cards[actives[actives.count - 1]].icon) &&
-                actives.count == groupLength {
+            if (actives.count > 1 &&
+                cards[actives[actives.count - 2]].icon != cards[actives[actives.count - 1]].icon){
+                for active in actives {
+                    cards[active].state = .WRONG
+                }
+            } else if actives.count == groupLength {
                 for active in actives {
                     cards[active].state = .SOLVED
                 }

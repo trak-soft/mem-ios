@@ -54,7 +54,7 @@ struct PlayScreen: View {
                         GridView(size: viewModel.cards.count
                         ) { index in
                             OptionContentView(
-                                backgroundColor: tint.opacity(0.05),
+                                backgroundColor: cardTint(index),
                                 tint: tint,
                                 onClick: {
                                     viewModel.onEvent(event:.CardClick(index: index))
@@ -80,11 +80,20 @@ struct PlayScreen: View {
         }
     }
     
-    private func getIcon(_ index: Int) -> String {
+    private func cardTint(_ index: Int) -> Color {
         switch viewModel.cards[index].state {
-        case .FACE_UP: return String(viewModel.cards[index].icon)
-        case .FACE_DOWN: return "-1"
-        case .SOLVED: return String(viewModel.cards[index].icon)
+        case .FACE_UP: return faceUpColor
+        case .FACE_DOWN: return tint.opacity(0.05)
+        case .SOLVED: return solvedColor
+        case .WRONG: return wrongColor
+        }
+    }
+    
+    private func getIcon(_ index: Int) -> String {
+        if case .FACE_DOWN = viewModel.cards[index].state {
+            return "-1"
+        } else {
+            return String(viewModel.cards[index].icon)
         }
     }
 }
