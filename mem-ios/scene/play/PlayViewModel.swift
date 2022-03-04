@@ -140,6 +140,7 @@ class PlayViewModel: ObservableObject {
                     cards[index].state = .FACE_DOWN
                 }
             }
+            cards.shuffle()
             state = .INIT
         }
     }

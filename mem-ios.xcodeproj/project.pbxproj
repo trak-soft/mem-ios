@@ -15,6 +15,7 @@
 		BA0ACC2127905AA60047BE8C /* mem_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */; };
 		BA15A6AA27D0601F008F3F8C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15A6A927D0601F008F3F8C /* Color.swift */; };
 		BA15A6AD27D064EE008F3F8C /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15A6AC27D064EE008F3F8C /* extension.swift */; };
+		BA15A6AF27D156C0008F3F8C /* CardIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA15A6AE27D156C0008F3F8C /* CardIcons.swift */; };
 		BA3A6BF5279C51F60062D216 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF4279C51F60062D216 /* HomeScreen.swift */; };
 		BA3A6BF7279C83F20062D216 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */; };
 		BA49EBA62797DD3800C67D52 /* OptionModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49EBA52797DD3800C67D52 /* OptionModeView.swift */; };
@@ -66,6 +67,7 @@
 		BA0ACC2027905AA60047BE8C /* mem_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mem_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BA15A6A927D0601F008F3F8C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BA15A6AC27D064EE008F3F8C /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		BA15A6AE27D156C0008F3F8C /* CardIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardIcons.swift; sourceTree = "<group>"; };
 		BA3A6BF4279C51F60062D216 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		BA3A6BF6279C83F20062D216 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BA49EBA52797DD3800C67D52 /* OptionModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionModeView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			path = "mem-iosUITests";
 			sourceTree = "<group>";
 		};
+		BA15A6B027D15A36008F3F8C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BA15A6AE27D156C0008F3F8C /* CardIcons.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		BA8012A92796871100A862E6 /* home */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		BA9D79FB279CCA8100D1CFF7 /* play */ = {
 			isa = PBXGroup;
 			children = (
+				BA15A6B027D15A36008F3F8C /* data */,
 				BAB361DB27BCB8B10096902D /* model */,
 				BAE4127E27A55A640066E620 /* component */,
 				BA9D79FC279CCA9A00D1CFF7 /* PlayScreen.swift */,
@@ -447,6 +458,7 @@
 				BAB9FD2D2796DB5F001DC263 /* Dimen.swift in Sources */,
 				BADFFB2127A8BCE800983056 /* GridView.swift in Sources */,
 				BAFB0632279B52B80089CAEB /* TitleView.swift in Sources */,
+				BA15A6AF27D156C0008F3F8C /* CardIcons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

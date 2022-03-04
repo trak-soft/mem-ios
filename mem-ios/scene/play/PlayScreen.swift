@@ -61,7 +61,10 @@ struct PlayScreen: View {
                                 },
                                 onHold: {}
                             ) {
-                                Text(getIcon(index)).frame(alignment: .center)
+                                OptionImageView(
+                                    icon: getIcon(index),
+                                    tint: tint
+                                ).frame(alignment: .center)
                             }
                         }
                         
@@ -91,9 +94,9 @@ struct PlayScreen: View {
     
     private func getIcon(_ index: Int) -> String {
         if case .FACE_DOWN = viewModel.cards[index].state {
-            return "-1"
+            return faceDownIcon
         } else {
-            return String(viewModel.cards[index].icon)
+            return Array(cardIcons)[viewModel.cards[index].icon]
         }
     }
 }
